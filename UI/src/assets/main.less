@@ -1,0 +1,79 @@
+/* --------------------------------- Spinner styles --------------------------------- */
+.spinner-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all 0.1s linear;
+    height: 100vh;
+    background: gray;
+  
+    z-index: 9998;
+    opacity: 0.6;
+
+    & .spinner-container {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 999;
+        text-align: center;
+
+        & .ant-spin {
+            color: white;
+        }
+        & .ant-spin-dot i {
+            background-color: white;
+        }
+    }
+}
+
+/* --------------------------------- Layout styles --------------------------------- */
+.body {
+    min-height: 100vh;
+}
+.header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    & .logo {
+        width: 120px;
+        height: 31px;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 16px 28px 16px 0;
+    }
+}
+.sider {
+    width: 200px;
+
+    & .menu {
+        height: 100%;
+    }
+}
+.content {
+    padding: 0 24px 0;
+    
+    .breadcrumb {
+        margin: 16px 0;
+    }
+}
+.main-content {
+    margin: 0;
+    padding: 24px;
+    min-height: 280px;
+    background: #fff;
+}
+.footer {
+    text-align: center;
+    padding: 10px 50px;
+}
+
+/* --------------------------------- General styles --------------------------------- */
+.capitalize {
+    text-transform: capitalize;
+}
+.full-width {
+    width: 100%;
+}

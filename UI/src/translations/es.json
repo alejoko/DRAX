@@ -1,0 +1,23 @@
+{
+    "app.title": "Esqueleto",
+    
+    "field.username": "nombre de usuario",
+    "field.password": "contraseña",
+    "field.rememberMe": "recordarme",
+    "field.key": "llave",
+    "field.tag": "etiqueta",
+    "field.value": "valor",
+    "field.contentInfo": "información",
+    
+    "main-menu.client": "Cliente",
+    "main-menu.admin": "Administracion",
+    "main-menu.login": "Entrar",
+    "main-menu.logout": "Salir",
+    
+    "action.login": "Entrar",
+    "action.cancel": "Cancelar",
+    
+    "loading.authenticate": "Autenticando ...",
+
+    "validation.required": "Por favor entre {field}!"
+}

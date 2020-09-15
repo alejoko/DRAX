@@ -1,0 +1,23 @@
+{
+    "app.title": "Skeletor",
+
+    "field.username": "username",
+    "field.password": "password",
+    "field.rememberMe": "rememberMe",
+    "field.key": "key",
+    "field.tag": "tag",
+    "field.value": "value",
+    "field.contentInfo": "content info",
+
+    "main-menu.client": "Client",
+    "main-menu.admin": "Administration",
+    "main-menu.login": "Login",
+    "main-menu.logout": "Logout",
+
+    "action.login": "Login",
+    "action.cancel": "Cancel",
+    
+    "loading.authenticate": "Authenticating ...",
+
+    "validation.required": "Please input your {field}!"
+}
