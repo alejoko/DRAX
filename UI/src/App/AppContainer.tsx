@@ -1,69 +1,53 @@
 import React, { Fragment } from 'react';
 import { Route, Switch, RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { useIntl } from 'react-intl';
 
-import { Layout } from 'antd';
-
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Box';
 import AppHeader from './components/AppHeader';
 import AppSider from './components/AppSider';
 import AppBody from './AppBody';
-import AppBreadcrumb from './AppBreadcrumb';
 import Loader from './components/Loader';
-import ScrollToTop from './components/ScrollToTop';
 import { ReduxDrawer } from './components/ReduxDrawer';
-import { NotFound, Forbiden, Error as ErrorPage } from './components/Pages';
+
+import GenericErrorPage, { genericErrorPageConfig as errorConfig } from './components/GenericErrorPage';
 
 import { AppActions } from './redux/actions';
 
 import { fixUrlEnd } from 'src/App/helpers/string';
 
-
-const { Content, Footer } = Layout;
-
 export type AppContainerProps = RouteComponentProps & {
     loading?: boolean;
     loadingText?: string;
 }
-function AppContainer(props: AppContainerProps) {
-    const { match, loading, loadingText } = props;
-
-    // #region React Cicle
-    // ======================================= React Cicle =======================================
+function AppContainer({ match, loading, loadingText }: AppContainerProps) {
+    const intl = useIntl();
     const path = React.useMemo(() => fixUrlEnd(match.url), [match.url]);
-    // #endregion
 
-    // #region Render
-    // ========================================== Render =========================================
     return (
         <Fragment>
-            <Loader loading={loading!} text={loadingText} />
-            <ReduxDrawer />
-            <Switch>
-                <Route exact={true} path={`${path}${ErrorPage.path}`} component={ErrorPage} />
-                <Route exact={true} path={`${path}${Forbiden.path}`} component={Forbiden} />
-                <Route exact={true} path={`${path}${NotFound.path}`} component={NotFound} />
+            <CssBaseline >
+                <Loader loading={loading!} text={loadingText} />
+                <ReduxDrawer />
+                <Switch>
+                    <Route exact={true} path={`${path}${errorConfig.internalServerErrorPath}`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.500.message'})} />} />
+                    <Route exact={true} path={`${path}${errorConfig.forbiddenPath}`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.403.message'})} />} />
+                    <Route exact={true} path={`${path}${errorConfig.notFoundPath}`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
 
-                <Route render={() => (
-                    <ScrollToTop>
-                        <Layout className="body">
+                    <Route render={() => (
+                        <Fragment>
                             <AppHeader />
-                            <Layout>
-                                <AppSider />
-                                <Layout className="content">
-                                    <AppBreadcrumb />
-                                    <Content className="main-content">
-                                        <AppBody />
-                                    </Content>
-                                    <Footer className="footer">pendiente...</Footer>
-                                </Layout>
-                            </Layout>
-                        </Layout>
-                    </ScrollToTop>
-                )} />
-            </Switch>
+                            <AppSider />
+                            <Container p={15}>
+                                <AppBody />
+                            </Container>
+                        </Fragment>
+                    )} />
+                </Switch>
+            </CssBaseline>
         </Fragment>
     )
-    // #endregion
 }
 
 function mapStateToProps(state: any) {

@@ -4,7 +4,7 @@ import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { History } from 'history';
 
-import { Result } from 'antd';
+import GenericErrorPage from 'src/App/components/GenericErrorPage';
 
 import App from 'src/App';
 import ServiceProvider from 'src/App/hooks/AuthProvider';
@@ -22,7 +22,6 @@ import config from './config';
 import * as serviceWorker from './serviceWorker';
 
 import './index.less';
-
 
 const root = document.getElementById('root');
 /**
@@ -59,21 +58,15 @@ async function init() {
         const xhrService = new XhrService();
 
         render(store, history, lang, autlService, xhrService);
-    } catch {
-        ReactDOM.render(
-            <Result
-                status="500"
-                title="500"
-                subTitle="Sorry, something went wrong."
-                extra={<a href="/">Reload</a>}
-            />, root
-        );
+    } catch(error) {
+        console.error(error);
+        ReactDOM.render(<GenericErrorPage severity="error" message="Sorry, something went wrong." />, root);
     }
 }
 function predictiveLoader() {
     const lang = getBrowserLang();
-    const { antd, intl, moment } = availablesLangs[lang];
-    Promise.all([antd(), intl(), moment(), init()]);
+    const { intl, moment } = availablesLangs[lang];
+    Promise.all([intl(), moment(), init()]);
 }
 loadPolyfill(predictiveLoader);
 

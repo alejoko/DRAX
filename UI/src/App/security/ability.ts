@@ -30,11 +30,6 @@ export function updateAbilitiesFor(user?: UserInfo) {
 
         //     can('assign', 'questionnaire');
         // }
-        // if (user.profile.roles.indexOf(Roles.SuperAdmin) !== -1) {
-        //     can('view', 'providers');
-        //     can('edit', 'provider');
-        //     can('add', 'provider');
-        // }
     } else {
         can('has', 'logout');
     }

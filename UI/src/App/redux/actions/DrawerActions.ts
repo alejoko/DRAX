@@ -1,8 +1,7 @@
 import { Constants } from './constants';
 import { actionCreator } from 'src/App/helpers/redux';
 
-import { DrawerProps } from 'antd/lib/drawer';
-
+import { DrawerProps } from '@material-ui/core/Drawer';
 
 export type DrawerChangePayload = {
     children?: JSX.Element;

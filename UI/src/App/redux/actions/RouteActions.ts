@@ -1,24 +1,23 @@
 import { push } from 'connected-react-router/immutable';
-import { Error, Forbiden, NotFound } from 'src/App/components/Pages';
-
+import { genericErrorPageConfig as errorConfig } from 'src/App/components/GenericErrorPage';
 
 /** Action globals app routes. */
 abstract class RouteActions {
-    /** Goto login page. */
+
     public static actionGotoLogin() {
         return push('/');
     }
-    /** Goto Forbiden page.  */
-    public static actionGotoForbiden() {
-        return push(`/${Forbiden.path}`);
+
+    public static actionGotoForbidden() {
+        return push(`/${errorConfig.forbiddenPath}`);
     }
-    /** Goto NotFound page.  */
+
     public static actionGotoNotFound() {
-        return push(`/${NotFound.path}`);
+        return push(`/${errorConfig.notFoundPath}`);
     }
-    /** Goto Error page.  */
+
     public static actionGotoError() {
-        return push(`/${Error.path}`);
+        return push(`/${errorConfig.internalServerErrorPath}`);
     }
 }
 export default RouteActions;

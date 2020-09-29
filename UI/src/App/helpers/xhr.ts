@@ -1,6 +1,6 @@
 import qs, { IStringifyOptions } from 'qs';
 
-function recursiveClean(data: any, skipVersion: boolean) {
+const recursiveClean = (data: any, skipVersion: boolean) => {
     if (Array.isArray(data)) {
         return data;
     }
@@ -13,13 +13,14 @@ function recursiveClean(data: any, skipVersion: boolean) {
         }
     }
     return aux;
-}
-function makeQueryString(data: any, cleanEmptyString?: boolean, options?: IStringifyOptions, skipVersion: boolean = true) {
+};
+
+const makeQueryString = (data: any, cleanEmptyString?: boolean, options?: IStringifyOptions, skipVersion: boolean = true) => {
     if (cleanEmptyString) {
         data = recursiveClean(data, skipVersion);
     }
     return qs.stringify(data, { allowDots: true, ...options });
-}
+};
 
 export {
     makeQueryString

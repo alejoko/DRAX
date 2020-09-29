@@ -1,10 +1,7 @@
+// TODO: we need this?
 import React from 'react';
 
-import { notification } from 'antd';
-
-
-
-export interface IMessage {
+/*export interface IMessage {
     data?: { [key: string]: string };
     text: string;
 }
@@ -14,10 +11,10 @@ export enum NotificationMsgType {
     Error = "error",
     Info = "info",
     Warning = "warning"
-}
+}*/
 
 class NotificationService {
-    private static _cache: { [key: string]: string } = {};
+    //private static _cache: { [key: string]: string } = {};
 
     /**
      * Show new notification messaje.
@@ -26,7 +23,7 @@ class NotificationService {
      * @param duration 
      * @param description 
      */
-    public static show(
+    /*public static show(
         message: IMessage, 
         type: NotificationMsgType = NotificationMsgType.Success, 
         duration: number = 6, 
@@ -89,6 +86,7 @@ class NotificationService {
     private static _exist(id: string): boolean {
         return NotificationService._cache.hasOwnProperty(id);
     }
+    */
 }
 
 export default NotificationService;
