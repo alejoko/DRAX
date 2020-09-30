@@ -1,9 +1,8 @@
+//TODO: to be removed
 import React, { PropsWithChildren, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { withRouter, RouteChildrenProps } from 'react-router-dom';
-
-import { BackTop } from 'antd';
 
 
 /**
@@ -11,7 +10,7 @@ import { BackTop } from 'antd';
  * @param props 
  */
 function ScrollToTop(props: PropsWithChildren<RouteChildrenProps>) {
-    const { children, location } = props;
+    /*const { children, location } = props;
 
     const [height, setHeight] = React.useState(window.innerHeight / 2)
 
@@ -30,9 +29,10 @@ function ScrollToTop(props: PropsWithChildren<RouteChildrenProps>) {
             {children}
             <BackTop visibilityHeight={height} />
         </Fragment>
-    )
+    )*/
     // #endregion
 }
+
 ScrollToTop.propTypes = {
     children: PropTypes.element.isRequired
 }

@@ -1,6 +1,6 @@
 
 export enum Roles {
-    Admin = 'admin'
+
 }
 export type UserInfo<T = any> = {
     id_token?: string;

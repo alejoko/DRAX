@@ -1,17 +1,14 @@
 import React from 'react';
 
-import { Breadcrumb } from 'antd';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Link from '@material-ui/core/Link';
 
-
-const { Item } = Breadcrumb;
-
-function AppBreadcrumb() {
+export default function AppBreadcrumb() {
     return (
-        <Breadcrumb className="breadcrumb">
-            <Item>Home</Item>
-            <Item>List</Item>
-            <Item>App</Item>
-        </Breadcrumb>
+        <Breadcrumbs className="breadcrumb">
+            <Link>Home</Link>
+            <Link>List</Link>
+            <Link>App</Link>
+        </Breadcrumbs>
     )
-}
-export default AppBreadcrumb;
+};

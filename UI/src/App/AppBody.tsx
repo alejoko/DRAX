@@ -1,36 +1,26 @@
 import React from 'react';
 import { Switch, Route, withRouter, RouteComponentProps } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 
-import { NotFound } from './components/Pages';
+import GenericErrorPage from './components/GenericErrorPage';
 import Home from 'src/modules/client/components/Home';
-import AdminModule from 'src/modules/admin/components';
 import ClientModule from 'src/modules/client/components';
 
 import { fixUrlEnd } from 'src/App/helpers/string';
 
-
 function AppBody(props: RouteComponentProps) {
     const { match } = props;
-
-    // #region React Cicle
-    // ======================================= React Cicle =======================================
+    const intl = useIntl();
     const path = React.useMemo(() => fixUrlEnd(match.url), [match.url]);
-    // #endregion
 
-    // #region Render
-    // ========================================== Render =========================================
     return (
         <Switch>
             <Route exact={true} path={path} component={Home}/>
-            
             <Route path={`${path}${ClientModule.path}`} component={ClientModule} />
-            <Route path={`${path}${AdminModule.path}`} component={AdminModule} />
-
-            <Route component={NotFound} />
+            <Route render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.default.message'})} />} />
         </Switch>
     )
-    // #endregion
-}
+};
 
 
 export default withRouter(AppBody);

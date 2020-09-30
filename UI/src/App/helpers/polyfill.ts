@@ -4,7 +4,7 @@ enum Browser {
     Other = 3,
 }
 /** Detect current executed browser. */
-function detectBrowser() {
+const detectBrowser  = () => {
     const ua = window.navigator.userAgent;
 
     //
@@ -38,9 +38,10 @@ function detectBrowser() {
 
     // Other browser
     return { browser: Browser.Other, version: 0 };
-}
+};
+
 /** Get correct polyfill cdnjs for currenct executed browser. */
-function getPolyfill(force: boolean) {
+const getPolyfill = (force: boolean) => {
     if (force) {
         return 'https://cdnjs.cloudflare.com/ajax/libs/core-js/2.6.11/core.js';
     } else {
@@ -52,9 +53,10 @@ function getPolyfill(force: boolean) {
         }
         return false;
     }
-}
+};
+
 /** Check if need load polyfill */
-function waitForLoadPolyfill(callback: () => void) {
+const waitForLoadPolyfill = (callback: () => void) => {
     if (!window.Promise) {
         setTimeout(function () {
             waitForLoadPolyfill(callback);
@@ -62,7 +64,7 @@ function waitForLoadPolyfill(callback: () => void) {
     } else {
         callback();
     }
-}
+};
 
 export function loadPolyfill(callback: () => void, force: boolean = false) {
     const cdns = getPolyfill(force);

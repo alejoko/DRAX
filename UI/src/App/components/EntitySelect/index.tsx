@@ -1,14 +1,11 @@
 import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
+/*import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import { Select, Spin } from 'antd';
-import { SelectProps, SelectValue } from 'antd/lib/select/index';
-
-import styles from './styles.module.less';
+import styles from './styles.module.less';*/
 
 
-export type EntitySelectProps<T extends SelectValue = SelectValue> = SelectProps<T> & {
+/*export type EntitySelectProps<T extends SelectValue = SelectValue> = SelectProps<T> & {
     config?: {
         key: string;
         name: string;
@@ -19,9 +16,10 @@ export type EntitySelectProps<T extends SelectValue = SelectValue> = SelectProps
     itemClassName?: string;
     filterDataSource?: (value: T, index: number, data: T[]) => boolean;
     dataSource?: any[];
-}
-function EntitySelect<T extends SelectValue = SelectValue>(props: EntitySelectProps<T>) {
-    const {
+}*/
+
+function EntitySelect/*<T extends SelectValue = SelectValue>*/(/*props: EntitySelectProps<T>*/) {
+    /*const {
         config, defaultValue, onChange, value,
         dataSource, showDefault, filterDataSource, itemClassName, toUpperCase = false, 
         ...rest
@@ -75,9 +73,9 @@ function EntitySelect<T extends SelectValue = SelectValue>(props: EntitySelectPr
                 </Select.Option>
             ))}
         </Select>
-    )
+    )*/
 }
-EntitySelect.defaultProps = {
+/*EntitySelect.defaultProps = {
     config: {
         defaultText: 'Select',
         key: 'id',
@@ -94,5 +92,5 @@ EntitySelect.propTypes = {
     showDefault: PropTypes.bool,
     toUpperCase: PropTypes.bool,
     itemClassName: PropTypes.string
-};
+};*/
 export default EntitySelect;

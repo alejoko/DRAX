@@ -1,23 +1,29 @@
 {
     "app.title": "Esqueleto",
     
-    "field.username": "nombre de usuario",
-    "field.password": "contraseña",
-    "field.rememberMe": "recordarme",
+    "login.username": "nombre de usuario",
+    "login.password": "contraseña",
+    "login.rememberMe": "recuérdame",
     "field.key": "llave",
     "field.tag": "etiqueta",
     "field.value": "valor",
     "field.contentInfo": "información",
     
     "main-menu.client": "Cliente",
-    "main-menu.admin": "Administracion",
-    "main-menu.login": "Entrar",
-    "main-menu.logout": "Salir",
-    
+    "main-menu.search": "Búsqueda",
+    "main-menu.pace": "PACE",
+    "main-menu.leadership.dynamics": "Leadership Dynamics",
+    "main-menu.drx.executive": "DRX Executive",
+
     "action.login": "Entrar",
     "action.cancel": "Cancelar",
     
     "loading.authenticate": "Autenticando ...",
 
-    "validation.required": "Por favor entre {field}!"
+    "validation.required": "Por favor introduzca {field}",
+
+    "generic-error-page.default.message" : "Lo siento, algo ha ido mal",
+    "generic-error-page.403.message": "Lo siento, no estás autorizado para acceder a esta página.",
+    "generic-error-page.404.message": "Lo siento, la página no existe.",
+    "generic-error-page.500.message" : "Lo siento, algo ha ido mal"
 }

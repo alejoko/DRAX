@@ -66,7 +66,7 @@ function appReducer(
 function drawerReducer(
     state: DrawerStore = {
         children: undefined,
-        drawerProps: { visible: false, destroyOnClose: true }
+        drawerProps: { open: false }
     },
     action: StdAction<DrawerChangePayload>
 ): DrawerStore {
@@ -75,10 +75,7 @@ function drawerReducer(
             const { children, drawerProps } = action.payload;
             return {
                 children,
-                drawerProps: {
-                    ...drawerProps,
-                    destroyOnClose: true
-                },
+                drawerProps: drawerProps!
             }
     }
     return state;

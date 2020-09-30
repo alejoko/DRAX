@@ -151,10 +151,10 @@ export class XhrService {
         if (response) {
             switch (response.status) {
                 case 401:
-                    this._config?.gotoLogin();
+                    this._config && this._config.gotoLogin();
                     break;
                 case 403:
-                    this._config?.gotoForbiden();
+                    this._config && this._config.gotoForbiden();
                     break;
                 case 404: // 404 are used intentionally in commandHandlers when a resource don't exist
                     break;

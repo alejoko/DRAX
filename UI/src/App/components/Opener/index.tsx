@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { OpenFactory, CloseFactory } from './_types';
 
-
 export type OpenerProps<T> = {
     value?: T;
     onChange?: (value?: T) => void;
@@ -10,34 +9,25 @@ export type OpenerProps<T> = {
     beforeOpenAsync?: (value?: T) => Promise<{ value: T, update: boolean }>;
     opener: OpenFactory<T>;
     children: CloseFactory<T>;
-}
-function Opener<T = any>(props: OpenerProps<T>) {
-    const { opener, value, onChange, toTextAsync, beforeOpenAsync, defaultVisible, children } = props;
+};
 
+export default function Opener<T = any>({ opener, value, onChange, toTextAsync, beforeOpenAsync, defaultVisible, children }: OpenerProps<T>) {
     const [label, setLabel] = useState<string>();
     const [visible, setVisible] = useState<boolean>(!!defaultVisible);
 
-    // #region Event
-    // ========================================== Event ==========================================
     async function handleOpen() {
         if (beforeOpenAsync) {
             const { value: enrichValue, update } = await beforeOpenAsync(value);
-            if (update && onChange) {
-                onChange(enrichValue);
-            }
+            update && onChange && onChange(enrichValue);
         }
         setVisible(true);
-    }
-    function handleClose(accept: boolean, value?: T) {
-        setVisible(false);
-        if (accept && onChange) {
-            onChange(value);
-        }
-    }
-    // #endregion
+    };
 
-    // #region React Cicle
-    // ======================================= React Cicle =======================================
+    const handleClose = (accept: boolean, value?: T) => {
+        setVisible(false);
+        accept && onChange && onChange(value);
+    };
+
     useEffect(() => {
         if (toTextAsync) {
             (async () => {
@@ -47,18 +37,12 @@ function Opener<T = any>(props: OpenerProps<T>) {
         } else {
             setLabel(value && `${value}`);
         }
-    }, [value, toTextAsync])
-    // #endregion
+    }, [value, toTextAsync]);
 
-    // #region Render
-    // ========================================== Render =========================================
     return (
         <Fragment>
             {opener(handleOpen, visible, value, label)}
             {children(handleClose, visible, value, label)}
         </Fragment>
     );
-    // #endregion
-}
-
-export default Opener;
+};

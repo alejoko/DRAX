@@ -1,16 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, Row, Col } from 'antd';
-import { SearchOutlined } from '@ant-design/icons';
-import { FilterDropdownProps } from 'antd/lib/table/interface';
-import { SizeType } from 'antd/lib/config-provider/SizeContext';
-
-import styles from './filter.module.less';
-import { ButtonProps } from 'antd/lib/button';
-
-
-type FilterProps<T> = {
+/*type FilterProps<T> = {
     defaultValue?: T;
     onChange: (value?: T) => void;
     component: React.ComponentType;
@@ -19,9 +10,11 @@ type FilterProps<T> = {
     primaryBtnProps?: ButtonProps;
     transformInnerValue?: (value: any) => T;
     filterDropdownProps?: FilterDropdownProps;
-}
+};*/
+
 // tslint:disable-next-line: variable-name
-function Filter<T = any>(props: FilterProps<T>) {
+function Filter<T = any>(/*props: FilterProps<T>*/) {
+    /*
     const { defaultValue, onChange, component, componentProps, transformInnerValue, filterDropdownProps, primaryBtnProps, btnProps } = props;
 
     const [innerValue, setInnerValue] = React.useState<any>(defaultValue);
@@ -90,10 +83,10 @@ function Filter<T = any>(props: FilterProps<T>) {
                 </Col>
             </Row>
         </div>
-    )
+    )*/
     // #endregion
 }
-Filter.primaryBtnProps = {
+/*Filter.primaryBtnProps = {
     size: 'small',
     type: "primary",
     icon: <SearchOutlined />,
@@ -111,5 +104,5 @@ Filter.defaultProps = {
 }
 Filter.propTypes = {
     onChange: PropTypes.func.isRequired
-}
+}*/
 export default Filter;

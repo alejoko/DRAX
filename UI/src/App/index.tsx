@@ -17,7 +17,6 @@ import { RouteActions, AppActions } from './redux/actions';
 
 import { XhrService } from './services/xhr';
 
-
 export type AppProps = {
     history: History;
     lang: string;
@@ -26,8 +25,9 @@ export type AppProps = {
     appInit: () => void;
     goto?: (action: CallHistoryMethodAction) => void;
     showSpin?: (visibility: boolean) => void;
-}
-function App(props: AppProps) {
+};
+
+const App = (props: AppProps) => {
     const { history, lang, xhrService, appInit, goto, showSpin } = props;
     const { user, loading } = useAuthService();
 
@@ -44,7 +44,7 @@ function App(props: AppProps) {
     // FOR HTTP REQUEST
     useMemo(() => xhrService.update({
         gotoLogin: () => goto!(RouteActions.actionGotoLogin()),
-        gotoForbiden: () => goto!(RouteActions.actionGotoForbiden()),
+        gotoForbiden: () => goto!(RouteActions.actionGotoForbidden()),
         hideSpin: () => showSpin!(false),
         showSpin: () => showSpin!(true)
     }), [goto, showSpin]);
@@ -75,11 +75,12 @@ function App(props: AppProps) {
             </ConnectedRouter>
         </XhrProvider>
     )
-}
+};
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
     appInit: () => dispatch(AppActions.actionInit()),
     goto: (action: CallHistoryMethodAction) => dispatch(action),
     showSpin: (visibility: boolean) => dispatch(AppActions.actionShowGlobalSpin(visibility)),
-})
+});
+
 export default connect(null, mapDispatchToProps)(App);

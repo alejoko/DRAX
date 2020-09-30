@@ -1,18 +1,11 @@
+// TODO: to review it
 import React from 'react';
 import { Dispatch } from 'redux';
 import { connect, MapStateToPropsParam, MapDispatchToPropsParam } from 'react-redux';
 
-import { Spin, Skeleton } from 'antd';
-import { SpinSize } from 'antd/lib/spin';
-import { AvatarProps } from 'antd/lib/skeleton/Avatar';
-import { SkeletonTitleProps } from 'antd/lib/skeleton/Title';
-import { SkeletonParagraphProps } from 'antd/lib/skeleton/Paragraph';
-
 import { useXhrClient } from 'src/App/hooks/XhrProvider';
 
 import { EntityBucket } from 'src/App/helpers/redux';
-
-
 
 export type LoaderFunc = (...arg: any[]) => ThunkFunc;
 export type ThunkFunc = (dispatch: Dispatch, getState: () => any) => Promise<any>;
@@ -33,12 +26,12 @@ export type LoaderInfo<T = any> = {
     loader: LoaderFunc;
 }
 export type WaitSettings = {
-    sping?: SpinSize;
-    skeleton?: {
+    // sping?: SpinSize;
+    /*skeleton?: {
         avatar?: AvatarProps | boolean,
         title?: SkeletonTitleProps | boolean,
         paragraph?: SkeletonParagraphProps | boolean,
-    },
+    },*/
     component?: JSX.Element;
 }
 
@@ -126,7 +119,7 @@ function withDataFromRedux<T>(
 
                     // #region Render
                     // ========================================== Render =========================================
-                    if (!data && wait) {
+                    /*if (!data && wait) {
                         if (wait === true) {
                             return <Spin size="default" />
                         }
@@ -139,7 +132,7 @@ function withDataFromRedux<T>(
                             );
                         }
                         return <Spin size={wait.sping || 'default'} />
-                    }
+                    }*/
 
                     const restProps: T = rest as any;
                     return (

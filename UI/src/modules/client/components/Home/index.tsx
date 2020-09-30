@@ -1,29 +1,25 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import { Button } from 'antd';
+import { Button } from '@material-ui/core';
 
-import TagSelect from 'src/modules/admin/shared/TagSelect';
-
-
-function Home() {
+export default function Home() {
     return (
-        <div>
+        <Fragment>
             <Link to="/en">EN</Link> | <Link to="/">RESET</Link>
             <br />
             <span>{moment.locale()}</span>
             <br />
             <FormattedMessage id="app.title" />
-            <Button type="primary">Match</Button>
-            <TagSelect />
+            <Button size="small" variant="contained" color="primary">Match</Button>
+
             <p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p>
             <p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p>
             <p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p>
             <p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p>
             <p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p><p>sssssss</p>
-        </div>
+        </Fragment>
     )
 }
-export default Home;

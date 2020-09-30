@@ -1,28 +1,26 @@
 import React from 'react';
 
-import { Spin } from 'antd';
-
+import Box from '@material-ui/core/Box';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export type LoaderProps = {
     text?: string;
-    loading: boolean
-}
-function Loader(props: LoaderProps) {
-    const { text, loading } = props;
+    loading: boolean;
+};
 
-    // #region Render
-    // ========================================== Render =========================================
-    if (!loading)
-        return null;
+export default function Loader({ loading, text }: LoaderProps) {
+    const spinner = loading ? <Box
+        top={0}
+        left={0}
+        bottom={0}
+        right={0}
+        position="absolute"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+    >
+        <CircularProgress></CircularProgress>
+    </Box> : null;
 
-    return (
-        <div className="spinner-backdrop">
-            <div className="spinner-container">
-                <Spin tip={text} spinning={loading} size="large" />
-            </div>
-        </div>
-    );
-    // #endregion
-}
-
-export default Loader;
+    return (spinner);
+};
