@@ -17,6 +17,10 @@ import { XhrService } from './App/services/xhr';
 import { IAuthService } from 'src/App/services/auth/_auth.type';
 import authFactory from 'src/App/services/auth/auth-password.service';
 
+import { ThemeProvider } from '@material-ui/core/styles';
+import { CssBaseline } from '@material-ui/core';
+import draxTheme from './assets/styles/themes';
+
 import config from './config';
 
 import * as serviceWorker from './serviceWorker';
@@ -31,11 +35,14 @@ ReactDOM.render(loadingText[defaultLang] as any, root);
 /** Render Main page */
 function render(store: Store, history: History, lang: string, authService: IAuthService, xhrService: XhrService) {
     const app = (
-        <Provider store={store}>
-            <ServiceProvider service={authService}>
-                <App history={history} lang={lang} xhrService={xhrService} />
-            </ServiceProvider>
-        </Provider>
+        <ThemeProvider theme={draxTheme}>
+          <CssBaseline />
+          <Provider store={store}>
+              <ServiceProvider service={authService}>
+                  <App history={history} lang={lang} xhrService={xhrService} />
+              </ServiceProvider>
+          </Provider>
+        </ThemeProvider>
     )
     ReactDOM.render(app, root);
 }
