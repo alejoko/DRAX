@@ -5,22 +5,11 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import styles from './styles';
 
 import { buildRoute } from 'src/App/helpers/string';
 import { sideBarItems } from './sideBarConfig';
-
-const drawerWidth = 77;
-
-const useStyles = makeStyles((theme) => ({
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    }
-}));
+import draxLogo from '../../../assets/images/svgs/drax-logo.svg'
 
 type SideBarProps = {
     selected: string;
@@ -30,7 +19,7 @@ type SideBarProps = {
 
 //TODO: fix add logo
 export default function SideBar({ selected, lang, byUser }: SideBarProps) {
-    const classes = useStyles();
+    const classes = styles.sideBarStyles();
 
     return (
         <Drawer
@@ -38,18 +27,22 @@ export default function SideBar({ selected, lang, byUser }: SideBarProps) {
             variant="persistent"
             anchor="left"
             open
-            classes={{
-                paper: classes.drawerPaper,
-            }}
         >
-            <Link className="logo" to={buildRoute(lang, byUser)} />
+            <Link className={classes.mainLogo} to={buildRoute(lang, byUser)}>
+                <img src={draxLogo} alt='Drax' />
+            </Link>
             <List>
                 {sideBarItems.map(element =>
-                    <ListItem key={element.key}>
-                        <Link key={element.key} to={buildRoute(lang, byUser, element.path, element.routes)}>
-                        <ListItemIcon>
-                            <element.icon/>
-                        </ListItemIcon>
+                    <ListItem
+                      key={element.key}
+                      className={classes.sideNavItem}>
+                        <Link
+                          key={element.key}
+                          className={classes.sideNavItemLink}
+                          to={buildRoute(lang, byUser, element.path, element.routes)}>
+                            <ListItemIcon className={classes.sideNavItemLinkIcon}>
+                                <element.icon />
+                            </ListItemIcon>
                         </Link>
                     </ListItem>)
                 }
