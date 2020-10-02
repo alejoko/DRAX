@@ -18,7 +18,6 @@ type SideBarProps = {
     byUser: boolean;
 };
 
-//TODO: fix add logo
 export default function SideBar({ selected, lang, byUser }: SideBarProps) {
     const classes = styles.sideBarStyles();
     const intl = useIntl();
@@ -36,8 +35,7 @@ export default function SideBar({ selected, lang, byUser }: SideBarProps) {
                 <img src={draxLogo} alt={intl.formatMessage({ id: 'main-menu.logo'})} />
             </Link>
             <List>
-                {sideBarItems.map(element => {
-                    return <ListItem
+                {sideBarItems.map(element => <ListItem
                       key={element.key}
                       className={`${classes.sideNavItem} ${getSelectedNavLink(element.routes)}`}>
                         <Link
@@ -48,8 +46,7 @@ export default function SideBar({ selected, lang, byUser }: SideBarProps) {
                                 <element.icon />
                             </ListItemIcon>
                         </Link>
-                    </ListItem>}
-                    )
+                    </ListItem>)
                 }
              </List>
         </Drawer>

@@ -23,7 +23,6 @@ declare module '@material-ui/core/styles/createMuiTheme' {
         globals: {
             topBarMinHeight: number;
             leftNavMaxWidth: number;
-            defaultTransitionTime: string;
         }
     }
 }
@@ -81,7 +80,6 @@ const baseStyles = {
     globals: {
         topBarMinHeight: 100,
         leftNavMaxWidth: 160,
-        defaultTransitionTime: '.35s'
     }
 };
 
