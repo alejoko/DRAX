@@ -42,7 +42,8 @@ export default {
             backgroundColor: fade(theme.palette.common.white, 0.15),
             width: '60%',
             color: theme.palette.common.white,
-            padding: theme.spacing(0,0,0,2)
+            padding: theme.spacing(0,0,0,2),
+            marginRight: theme.spacing(1)
         },
         searchInputIcon: {
             color: theme.palette.common.white,
