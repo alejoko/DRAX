@@ -40,7 +40,13 @@ export default {
         },
         searchInput: {
             backgroundColor: fade(theme.palette.common.white, 0.15),
+            width: '60%',
+            color: theme.palette.common.white,
             padding: theme.spacing(0,0,0,2)
+        },
+        searchInputIcon: {
+            color: theme.palette.common.white,
+            opacity: .6
         },
         inputRoot: {
             color: 'inherit',

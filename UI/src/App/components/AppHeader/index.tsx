@@ -9,9 +9,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import styles from './styles';
@@ -25,6 +22,7 @@ import { buildRoute } from 'src/App/helpers/string';
 
 import { AppActions } from 'src/App/redux/actions';
 import { ChangeLangPayload } from 'src/App/redux/actions/AppActions';
+import { Search, User, Notifications } from '../shared/Icons';
 
 export type AppHeaderProps = RouteComponentProps<{ lang: string }> & {
     lang?: ChangeLangPayload;
@@ -48,7 +46,7 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
     const getAnonMenuItems = () =>
         <Toolbar>
             <IconButton color="inherit" onClick={loginClickHandler}>
-                <AccountCircle />
+                <User />
             </IconButton>
         </Toolbar>;
 
@@ -72,17 +70,17 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
                         <Link
                             className={classes.menuLink}
                             to={buildRoute(lang ?.code!, lang?.byUser!, ClientModule.path, ClientModule.routes.home)}>
-                            {intl.formatMessage({id: 'main-menu.client'})}
+                            {intl.formatMessage({id: 'main-menu.drx.executive'})}
                         </Link>
                         <Link
                             className={`${classes.menuLink} ${classes.menuLinkSelected}`}
                             to={buildRoute(lang ?.code!, lang?.byUser!, ClientModule.path, ClientModule.routes.home)}>
-                            {intl.formatMessage({id: 'main-menu.client'})}
+                            {intl.formatMessage({id: 'main-menu.leadership.dynamics'})}
                         </Link>
                         <Link
                             className={classes.menuLink}
                             to={buildRoute(lang ?.code!, lang?.byUser!, ClientModule.path, ClientModule.routes.home)}>
-                            {intl.formatMessage({id: 'main-menu.client'})}
+                            {intl.formatMessage({id: 'main-menu.pace'})}
                         </Link>
                     </Box>
                 </Grid>
@@ -93,16 +91,16 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
                             className={classes.searchInput}
                             inputProps={{ 'aria-label': 'search' }}
                             endAdornment={<IconButton>
-                                <SearchIcon />
+                                <Search className={classes.searchInputIcon} />
                             </IconButton>}
                         />
                         <IconButton color="inherit">
-                            <Badge badgeContent={1} color="secondary">
-                                <NotificationsIcon />
+                            <Badge badgeContent={1} variant="dot" color="secondary">
+                                <Notifications />
                             </Badge>
                         </IconButton>
                         <IconButton color="inherit" onClick={logoutPasswordHandler}>
-                            <AccountCircle />
+                            <User />
                         </IconButton>
                     </Box>
                 </Grid>
@@ -115,7 +113,7 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
             position="fixed"
         >
             <Box className={classes.contentWrapper}>
-                { isAuth ? getAuthMenuItems() : getAnonMenuItems() }
+                { !isAuth ? getAuthMenuItems() : getAnonMenuItems() }
             </Box>
             <Modal
                 open={visible}
