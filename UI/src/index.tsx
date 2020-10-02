@@ -25,8 +25,6 @@ import config from './config';
 
 import * as serviceWorker from './serviceWorker';
 
-import './index.less';
-
 const root = document.getElementById('root');
 /**
  * Early render to indicate user the site is loading. */
