@@ -26,7 +26,10 @@ export default {
         },
         sideNavItemSelected: {
             color: theme.palette.secondary.main,
-            borderLeftColor: theme.palette.secondary.main
+            borderLeftColor: theme.palette.secondary.main,
+            '& a': {
+                opacity: 1
+            }
         },
         sideNavItemLink: {
             color: 'inherit',

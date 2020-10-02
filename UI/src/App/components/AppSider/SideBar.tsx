@@ -21,6 +21,8 @@ type SideBarProps = {
 export default function SideBar({ selected, lang, byUser }: SideBarProps) {
     const classes = styles.sideBarStyles();
 
+    const getSelectedNavLink = (route: string) => route === selected ? classes.sideNavItemSelected : ''
+
     return (
         <Drawer
             className={classes.drawer}
@@ -32,10 +34,10 @@ export default function SideBar({ selected, lang, byUser }: SideBarProps) {
                 <img src={draxLogo} alt='Drax' />
             </Link>
             <List>
-                {sideBarItems.map(element =>
-                    <ListItem
+                {sideBarItems.map(element => {
+                    return <ListItem
                       key={element.key}
-                      className={classes.sideNavItem}>
+                      className={`${classes.sideNavItem} ${getSelectedNavLink(element.routes)}`}>
                         <Link
                           key={element.key}
                           className={classes.sideNavItemLink}
@@ -44,7 +46,8 @@ export default function SideBar({ selected, lang, byUser }: SideBarProps) {
                                 <element.icon />
                             </ListItemIcon>
                         </Link>
-                    </ListItem>)
+                    </ListItem>}
+                    )
                 }
              </List>
         </Drawer>
