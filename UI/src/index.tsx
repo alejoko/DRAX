@@ -33,14 +33,14 @@ ReactDOM.render(loadingText[defaultLang] as any, root);
 /** Render Main page */
 function render(store: Store, history: History, lang: string, authService: IAuthService, xhrService: XhrService) {
     const app = (
-        <ThemeProvider theme={draxTheme}>
-          <CssBaseline />
-          <Provider store={store}>
-              <ServiceProvider service={authService}>
-                  <App history={history} lang={lang} xhrService={xhrService} />
-              </ServiceProvider>
-          </Provider>
-        </ThemeProvider>
+        <Provider store={store}>
+            <ServiceProvider service={authService}>
+                <ThemeProvider theme={draxTheme}>
+                    <CssBaseline />
+                    <App history={history} lang={lang} xhrService={xhrService} />
+                </ThemeProvider>
+            </ServiceProvider>
+        </Provider>
     )
     ReactDOM.render(app, root);
 }
