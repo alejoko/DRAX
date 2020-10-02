@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -20,6 +21,7 @@ type SideBarProps = {
 //TODO: fix add logo
 export default function SideBar({ selected, lang, byUser }: SideBarProps) {
     const classes = styles.sideBarStyles();
+    const intl = useIntl();
 
     const getSelectedNavLink = (route: string) => route === selected ? classes.sideNavItemSelected : ''
 
@@ -31,7 +33,7 @@ export default function SideBar({ selected, lang, byUser }: SideBarProps) {
             open
         >
             <Link className={classes.mainLogo} to={buildRoute(lang, byUser)}>
-                <img src={draxLogo} alt='Drax' />
+                <img src={draxLogo} alt={intl.formatMessage({ id: 'main-menu.logo'})} />
             </Link>
             <List>
                 {sideBarItems.map(element => {

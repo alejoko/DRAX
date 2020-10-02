@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
-import {useIntl} from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
@@ -56,12 +56,18 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
             <Grid container>
                 <Grid item xs={4}>
                     <Box display='inline-block'>
-                        <Typography className={classes.welcomeMessage}>Hello Matthew, welcome back!</Typography>
+                        <Typography className={classes.welcomeMessage}>
+                            {intl.formatMessage({id: 'message.welcome-message'}, {name: 'Matthew'})}
+                        </Typography>
                         <Box display='flex' justifyContent='space-between'>
-                            <Typography className={classes.otherText}>Last login at 22 June 2020, 18:38</Typography>
+                            <Typography className={classes.otherText}>
+                                {intl.formatMessage({id: 'message.last-login-at'})} 22 June 2020, 18:38
+                            </Typography>
                             <Link
                                 className={`${classes.otherText} ${classes.logOutLink}`}
-                                to={buildRoute(lang ?.code!, lang?.byUser!, ClientModule.path, ClientModule.routes.home)}>Logout</Link>
+                                to={buildRoute(lang ?.code!, lang?.byUser!, ClientModule.path, ClientModule.routes.home)}>
+                                    {intl.formatMessage({id: 'action.logout'})}
+                            </Link>
                         </Box>
                     </Box>
                 </Grid>
@@ -113,7 +119,7 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
             position="fixed"
         >
             <Box className={classes.contentWrapper}>
-                { !isAuth ? getAuthMenuItems() : getAnonMenuItems() }
+                { isAuth ? getAuthMenuItems() : getAnonMenuItems() }
             </Box>
             <Modal
                 open={visible}
