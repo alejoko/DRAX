@@ -7,16 +7,7 @@ export default {
             boxShadow: 'none',
             width: `calc(100% - ${theme.globals.leftNavMaxWidth}px)`,
             height: theme.globals.topBarMinHeight,
-            marginLeft: theme.globals.leftNavMaxWidth,
-            '&::before': {
-                content: '""',
-                backgroundImage: 'linear-gradient(to bottom, #0000004c, #00000000)',
-                width: '100%',
-                height: 250,
-                position: 'absolute',
-                top: 0,
-                left: 0,
-            }
+            marginLeft: theme.globals.leftNavMaxWidth
         },
         contentWrapper: {
             height: '100%',
