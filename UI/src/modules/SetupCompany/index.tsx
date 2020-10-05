@@ -1,26 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 
 import { Stepper, Step } from './components/Stepper';
-import SetDomain from './components/SetDomain';
-import SetTeam from './components/SetTeam';
+
+import SetupCompanyLayout from './components/SetupCompanyLayout';
+import Domain from './components/Domain';
+import Team from './components/Team';
 
 import { AppActions } from 'src/App/redux/actions';
 import { ChangeLangPayload } from 'src/App/redux/actions/AppActions';
 
-export type SetupCompanyProps = RouteComponentProps<{ lang: string }> & {
+type SetupCompanyProps = RouteComponentProps<{ lang: string }> & {
     lang?: ChangeLangPayload;
 };
 
 const SetupCompany = (props: SetupCompanyProps) => {
+    const intl = useIntl();
+
     return (
         <Stepper>
-            <Step label="One">
-                <SetDomain {...props}/>
+            <Step label={intl.formatMessage({ id: 'setup-company.setDomain.title'})}>
+                <SetupCompanyLayout {...props}>
+                    <Domain {...props}/>
+                </SetupCompanyLayout>
             </Step>
-            <Step label="Two">
-                <SetTeam {...props}/>
+            <Step label={intl.formatMessage({ id: 'setup-company.setTeam.title'})}>
+                <SetupCompanyLayout {...props}>
+                    <Team {...props}/>
+                </SetupCompanyLayout>
             </Step>
         </Stepper>
     )

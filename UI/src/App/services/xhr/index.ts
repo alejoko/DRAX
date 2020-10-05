@@ -1,6 +1,14 @@
 import Axios, { AxiosRequestConfig } from 'axios';
 import { UserInfo } from '../auth/_auth.type';
 
+export type XhrResponse<T = any> = {
+    data: T;
+    status: number;
+    statusText: string;
+    headers: any;
+    config: any;
+    request?: any;
+}
 
 export type XhrError<T = any> = {
     config: any;
@@ -10,14 +18,7 @@ export type XhrError<T = any> = {
     isAxiosError: boolean;
     toJSON: () => object;
 }
-export type XhrResponse<T = any> = {
-    data: T;
-    status: number;
-    statusText: string;
-    headers: any;
-    config: any;
-    request?: any;
-}
+
 export type RequestConfig = {
     params: any
 }
@@ -32,13 +33,32 @@ export class XhrClient {
     public constructor(service: XhrService) {
         this._service = service;
     }
+
     /**
      * Perform GET request
-     * @param url 
+     * @param url
      */
     public get<T = any>(url: string, config?: RequestConfig): Promise<XhrResponse<T>> {
         return Axios.get(url, config);
     }
+
+    /**
+     * Perform GET request
+     * @param url
+     * @param useQueryKey
+     */
+    //
+    /*public get<T = any>(url: string, useQueryKey : string, config?: RequestConfig): IResponse<T> {
+        const { status, data, error, isLoading } = useQuery(useQueryKey, async () => {
+            const { data } = await Axios.get(url, config);
+            return data;
+        });
+
+        !data || isLoading ? this._service.config.showSpin() : this._service.config.hideSpin();
+
+        console.log('data retornada: ', data);
+        return data;
+    }*/
     /**
      * Perform POST operation
      * @param url 
@@ -96,8 +116,8 @@ export class XhrService {
      * @param config Configuration arguments
      */
     public constructor() {
-        Axios.interceptors.request.use(this._requestInterceptor);
-        Axios.interceptors.response.use(response => response, this._responseErrorInterceptor);
+        // Axios.interceptors.request.use(this._requestInterceptor);
+        // Axios.interceptors.response.use(response => response, this._responseErrorInterceptor);
     }
 
     /** Get configuration */
@@ -129,6 +149,7 @@ export class XhrService {
     // #region Private
     // ========================================= Private =========================================
     private _requestInterceptor = (cfg: AxiosRequestConfig) => {
+        debugger;
         if (this._user?.access_token) {
             if (!cfg.headers.common['Content-Type']) {
                 cfg.headers.common['Content-Type'] = 'application/json';
@@ -146,6 +167,7 @@ export class XhrService {
         return cfg;
     }
     private _responseErrorInterceptor = (error: any) => {
+        debugger;
         const { response } = error;
 
         if (response) {

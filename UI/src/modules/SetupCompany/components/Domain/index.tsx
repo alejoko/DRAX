@@ -5,14 +5,14 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { AppActions } from 'src/App/redux/actions';
 import { ChangeLangPayload } from 'src/App/redux/actions/AppActions';
 
-export type SetTeamProps = RouteComponentProps<{ lang: string }> & {
+type DomainProps = RouteComponentProps<{ lang: string }> & {
     lang?: ChangeLangPayload;
 };
 
-const SetTeam = ({ lang }: SetTeamProps) => {
+const Domain = ({ lang }: DomainProps) => {
     return (
         <>
-            module set team
+            module domain
         </>
     )
 };
@@ -21,4 +21,4 @@ const mapStateToProps = (state: any) => ({
     lang: AppActions.get(state).lang
 });
 
-export default connect(mapStateToProps)(SetTeam);
+export default connect(mapStateToProps)(Domain);

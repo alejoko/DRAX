@@ -20,7 +20,7 @@ const config: Configuration = {
             tokenEndPoint: ''
         }
     },
-    endpoint: 'https://localhost:3000/'
+    endpoint: 'http://localhost:3000/' //TODO: change for testing
 } as any;
 
 

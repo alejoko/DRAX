@@ -12,16 +12,16 @@ import { fixUrlEnd } from 'src/App/helpers/string';
 export default function ClientModule({ match: { url } }: RouteComponentProps) {
     const intl = useIntl();
     const path = React.useMemo(() => fixUrlEnd(url), [url]);
-    console.log('path', `${path}companySearch`);
 
     return (
         <Switch>
             <Route exact={true} path={`${path}`} component={Home} />
             <Route exact={true} path={`${path}search`} component={Search} />
-            <Route path={`${path}company-search`} component={SetupCompany}  />
-            <Route path={`${path}watchList`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
-            <Route path={`${path}mySearches`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
-            <Route path={`${path}howItWorks`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
+            <Route exact={true} path={`${path}company-search`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
+            <Route path={`${path}company-search/:companyId`} component={SetupCompany} />
+            <Route path={`${path}watch-list`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
+            <Route path={`${path}my-searches`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
+            <Route path={`${path}how-It-works`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
 
             <Route render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
         </Switch>

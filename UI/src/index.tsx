@@ -4,6 +4,8 @@ import { Store } from 'redux';
 import { Provider } from 'react-redux';
 import { History } from 'history';
 
+import { QueryCache, ReactQueryCacheProvider } from "react-query";
+
 import GenericErrorPage from 'src/App/components/GenericErrorPage';
 
 import App from 'src/App';
@@ -30,12 +32,18 @@ ReactDOM.render(loadingText[defaultLang] as any, root);
 
 /** Render Main page */
 function render(store: Store, history: History, lang: string, authService: IAuthService, xhrService: XhrService) {
+    const queryCache = new QueryCache();
     const app = (
-        <Provider store={store}>
-            <ServiceProvider service={authService}>
-                <App history={history} lang={lang} xhrService={xhrService} />
-            </ServiceProvider>
-        </Provider>
+        <>
+            <Provider store={store}>
+                <ServiceProvider service={authService}>
+                    <ReactQueryCacheProvider queryCache={queryCache}>
+                        <App history={history} lang={lang} xhrService={xhrService} />
+                    </ReactQueryCacheProvider>
+                </ServiceProvider>
+            </Provider>
+        </>
+
     )
     ReactDOM.render(app, root);
 }

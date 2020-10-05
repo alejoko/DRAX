@@ -5,14 +5,14 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { AppActions } from 'src/App/redux/actions';
 import { ChangeLangPayload } from 'src/App/redux/actions/AppActions';
 
-export type SetDomainProps = RouteComponentProps<{ lang: string }> & {
+type CompanySummaryProps = RouteComponentProps<{ lang: string }> & {
     lang?: ChangeLangPayload;
 };
 
-const SetDomain = ({ lang }: SetDomainProps) => {
+const CompanySummary = ({ lang }: CompanySummaryProps) => {
     return (
         <>
-            module Setup company
+            company summary
         </>
     )
 };
@@ -21,4 +21,4 @@ const mapStateToProps = (state: any) => ({
     lang: AppActions.get(state).lang
 });
 
-export default connect(mapStateToProps)(SetDomain);
+export default connect(mapStateToProps)(CompanySummary);

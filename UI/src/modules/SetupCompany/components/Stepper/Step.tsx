@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 
 type StepProps = {
-    children?: ReactNode;
+    children?: ReactElement | null;
     label?: string;
 };
 

@@ -25,5 +25,8 @@
     "generic-error-page.default.message" : "Lo siento, algo ha ido mal",
     "generic-error-page.403.message": "Lo siento, no estás autorizado para acceder a esta página.",
     "generic-error-page.404.message": "Lo siento, la página no existe.",
-    "generic-error-page.500.message" : "Lo siento, algo ha ido mal"
+    "generic-error-page.500.message" : "Lo siento, algo ha ido mal",
+
+    "setup-company.setDomain.title": "02/03 Set Domain",
+    "setup-company.setTeam.title": "03/03 Set Team"
 }

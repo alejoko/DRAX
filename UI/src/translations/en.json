@@ -25,6 +25,9 @@
     "generic-error-page.default.message" : "Sorry, something went wrong",
     "generic-error-page.403.message": "Sorry, you are not authorized to access this page.",
     "generic-error-page.404.message": "Sorry, the page you visited does not exist.",
-    "generic-error-page.500.message" : "Sorry, something went wrong"
+    "generic-error-page.500.message" : "Sorry, something went wrong",
+
+    "setup-company.setDomain.title": "02/03 Set Domain",
+    "setup-company.setTeam.title": "03/03 Set Team"
 
 }

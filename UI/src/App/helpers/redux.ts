@@ -58,7 +58,7 @@ export function entityReducer(state: any, action: StdAction<EntityPayload>, type
         const data = Array.isArray(action.payload.data) ? action.payload.data : [action.payload.data];
         return {
             cache: buildEntityCache(data, action.payload.idKey),
-            data
+            data: action.payload.data
         }
     }
     return state;
@@ -86,6 +86,7 @@ export async function entitySafeLoad<T = any>(
     isRequestPending: (reqPending: any, store: string) => boolean = (reqPending, store) => reqPending[store],
     updateRequestPending: (reqPending: any, store: string, value: boolean) => void = (reqPending, store, value) => reqPending[store] = value
 ) {
+    debugger;
     const state = getState();
     if (!isAlreadyLoad(state, store)) {
         if (!isRequestPending(requested, store)) {
