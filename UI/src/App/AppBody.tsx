@@ -12,12 +12,9 @@ import ClientModule from 'src/modules/client/components';
 import { fixUrlEnd } from 'src/App/helpers/string';
 
 const useStyles = makeStyles((theme) => ({
-    contentWrapper: {
-        width: `calc(100% - ${theme.globals.leftNavMaxWidth}px)`,
-        marginLeft: theme.globals.leftNavMaxWidth,
-        minHeight: `calc(100% - ${theme.globals.topBarMinHeight}px)`,
-        marginTop: theme.globals.topBarMinHeight,
+    appBody: {
         padding: theme.spacing(5),
+        ...theme.mixins.appBody,
         '&::before': {
             content: '""',
             backgroundImage: 'linear-gradient(to bottom, #0000004c, #00000000)',
@@ -38,7 +35,7 @@ function AppBody(props: RouteComponentProps) {
     const classes = useStyles();
 
     return (
-        <Container className={classes.contentWrapper}>
+        <Container className={classes.appBody}>
             <Switch>
                 <Route exact={true} path={path} component={Home}/>
                 <Route path={`${path}${ClientModule.path}`} component={ClientModule} />

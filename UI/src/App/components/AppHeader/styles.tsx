@@ -5,9 +5,7 @@ export default {
         root: {
             backgroundColor: 'transparent',
             boxShadow: 'none',
-            width: `calc(100% - ${theme.globals.leftNavMaxWidth}px)`,
-            height: theme.globals.topBarMinHeight,
-            marginLeft: theme.globals.leftNavMaxWidth
+            ...theme.mixins.appHeader
         },
         contentWrapper: {
             height: '100%',
@@ -16,7 +14,13 @@ export default {
         },
         welcomeMessage: {
             fontSize: 32,
-            fontWeight: 700
+            fontWeight: 700,
+            [theme.breakpoints.up('md')]: {
+                backgroundColor: 'red',
+              },
+            "@media (min-width:1440px)": {
+                maxWidth: 160
+            }
         },
         otherText: {
             fontSize: 14,

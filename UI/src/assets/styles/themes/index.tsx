@@ -23,7 +23,16 @@ declare module '@material-ui/core/styles/createMuiTheme' {
         globals: {
             topBarMinHeight: number;
             leftNavMaxWidth: number;
+            appBody: number;
         }
+    }
+}
+
+declare module '@material-ui/core/styles/createMixins' {
+    interface Mixins {
+        appHeader: object;
+        sideBar: object;
+        appBody: object;
     }
 }
 
@@ -76,11 +85,34 @@ const baseStyles = {
             },
         },
     },
-    // Global variables
-    globals: {
-        topBarMinHeight: 100,
-        leftNavMaxWidth: 160,
-    }
+    // Mixins
+    mixins: {
+        appHeader: {
+            marginLeft: 0,
+            "@media (min-width:600px)": {
+                width: `calc(100% - 160px)`,
+                height: 100,
+                marginLeft: 160
+            }
+        },
+        sideBar: {
+            // maxWidth: 56,
+            "@media (min-width:600px)": {
+                maxWidth: 160
+            }
+        },
+        appBody: {
+            width: `calc(100% - ${160}px)`,
+            marginLeft: 0,
+            minHeight: `calc(100% - ${100}px)`,
+            "@media (min-width:600px)": {
+                width: `calc(100% - 160px)`,
+                marginLeft: 160,
+                minHeight: `calc(100% - 100px)`,
+                marginTop: 100,
+            }
+        }
+    },
 };
 
 export default createMuiTheme(baseStyles, { themeName });

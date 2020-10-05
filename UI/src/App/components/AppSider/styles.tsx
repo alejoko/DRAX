@@ -5,7 +5,7 @@ export default {
         drawer: {
             '& .MuiDrawer-paper': {
                 width: '100%',
-                maxWidth: theme.globals.leftNavMaxWidth
+                ...theme.mixins.sideBar
             }
         },
         mainLogo: {
@@ -34,7 +34,7 @@ export default {
         sideNavItemLink: {
             color: 'inherit',
             opacity: .6,
-            transition: `opacity ${theme.globals.defaultTransitionTime}`,
+            transition: `opacity ${theme.transitions.duration.complex}ms`,
             '&:hover': {
                 opacity: 1
             },
