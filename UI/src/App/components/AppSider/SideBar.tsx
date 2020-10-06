@@ -1,26 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useIntl } from 'react-intl';
 
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import styles from './styles';
 
 import { buildRoute } from 'src/App/helpers/string';
 import { sideBarItems } from './sideBarConfig';
-
-const drawerWidth = 77;
-
-const useStyles = makeStyles((theme) => ({
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    }
-}));
+import draxLogo from '../../../assets/images/svgs/drax-logo.svg'
 
 type SideBarProps = {
     selected: string;
@@ -28,9 +18,11 @@ type SideBarProps = {
     byUser: boolean;
 };
 
-//TODO: fix add logo
 export default function SideBar({ selected, lang, byUser }: SideBarProps) {
-    const classes = useStyles();
+    const classes = styles.sideBarStyles();
+    const intl = useIntl();
+
+    const getSelectedNavLink = (route: string) => route === selected ? classes.sideNavItemSelected : ''
 
     return (
         <Drawer
@@ -38,18 +30,21 @@ export default function SideBar({ selected, lang, byUser }: SideBarProps) {
             variant="persistent"
             anchor="left"
             open
-            classes={{
-                paper: classes.drawerPaper,
-            }}
         >
-            <Link className="logo" to={buildRoute(lang, byUser)} />
+            <Link className={classes.mainLogo} to={buildRoute(lang, byUser)}>
+                <img src={draxLogo} alt={intl.formatMessage({ id: 'main-menu.logo'})} />
+            </Link>
             <List>
-                {sideBarItems.map(element =>
-                    <ListItem key={element.key}>
-                        <Link key={element.key} to={buildRoute(lang, byUser, element.path, element.routes)}>
-                        <ListItemIcon>
-                            <element.icon/>
-                        </ListItemIcon>
+                {sideBarItems.map(element => <ListItem
+                      key={element.key}
+                      className={`${classes.sideNavItem} ${getSelectedNavLink(element.routes)}`}>
+                        <Link
+                          key={element.key}
+                          className={classes.sideNavItemLink}
+                          to={buildRoute(lang, byUser, element.path, element.routes)}>
+                            <ListItemIcon className={classes.sideNavItemLinkIcon}>
+                                <element.icon />
+                            </ListItemIcon>
                         </Link>
                     </ListItem>)
                 }
