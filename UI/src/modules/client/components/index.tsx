@@ -16,10 +16,9 @@ export default function ClientModule({ match: { url } }: RouteComponentProps) {
         <Switch>
             <Route exact={true} path={`${path}`} component={Home} />
             <Route exact={true} path={`${path}search`} component={Search} />
-            <Route path={`${path}companySearch`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
             <Route path={`${path}watchList`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
             <Route path={`${path}mySearches`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
-            <Route path={`${path}howItWorks`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
+            <Route path={`${path}howItWorks`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />    
 
             <Route render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
         </Switch>
