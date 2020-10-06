@@ -22,7 +22,8 @@ import { buildRoute } from 'src/App/helpers/string';
 
 import { AppActions } from 'src/App/redux/actions';
 import { ChangeLangPayload } from 'src/App/redux/actions/AppActions';
-import { Search, User, Notifications } from '../shared/Icons';
+import CustomIcon from '../CustomIcon';
+import icons from '../../enums/icons';
 
 export type AppHeaderProps = RouteComponentProps<{ lang: string }> & {
     lang?: ChangeLangPayload;
@@ -44,7 +45,7 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
     const getAnonMenuItems = () =>
         <Toolbar>
             <IconButton color="inherit" onClick={loginClickHandler}>
-                <User />
+                <CustomIcon icon={icons.user} />
             </IconButton>
         </Toolbar>;
 
@@ -94,16 +95,16 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
                             className={classes.searchInput}
                             inputProps={{ 'aria-label': 'search' }}
                             endAdornment={<IconButton>
-                                <Search className={classes.searchInputIcon} />
+                                <CustomIcon className={classes.searchInputIcon} icon={icons.search} />
                             </IconButton>}
                         />
                         <IconButton color="inherit">
                             <Badge badgeContent={1} variant="dot" color="secondary">
-                                <Notifications />
+                                <CustomIcon icon={icons.bell} />
                             </Badge>
                         </IconButton>
                         <IconButton color="inherit" onClick={logoutPasswordHandler}>
-                            <User />
+                            <CustomIcon icon={icons.user} />
                         </IconButton>
                     </Box>
                 </Grid>
