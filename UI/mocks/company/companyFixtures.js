@@ -6746,4 +6746,13 @@ const companies = [
 
 const getCompanyById = companyId => companies.find(company => company.company_id === companyId);
 
+const getSectors = companyId => getCompanyById(companyId).company_record.sectors;
+
+const getProducts = companyId => getCompanyById(companyId).company_record.products;
+
+const getTags = companyId => getCompanyById(companyId).company_record.tags;
+
 exports.getCompanyById = getCompanyById;
+exports.getSectors = getSectors;
+exports.getProducts = getProducts;
+exports.getTags = getTags;
