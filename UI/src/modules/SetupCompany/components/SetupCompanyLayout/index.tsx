@@ -1,6 +1,8 @@
 import React, { ReactElement, useEffect } from 'react';
 import { RouteComponentProps, useParams, useHistory } from 'react-router-dom';
 
+import Box from '@material-ui/core/Box';
+
 import { useSelector, useDispatch } from 'react-redux';
 
 import Grid from '@material-ui/core/Grid';
@@ -25,8 +27,7 @@ const SetupCompanyLayout = (props: SetupCompanyLayoutProps) => {
     const companyId = '29218';
     // const client = useXhrClient();
     // const dispatch = useDispatch();
-    // const state = useSelector((state : any) => state?.stCompany?.data[0]);
-    debugger;
+
     // console.log('Estado que retorna ', state);
 
     // useEffect(() => { dispatch(CompanyActions.fetchCompanyById(client, companyId)); }, [companyId, dispatch]);
@@ -34,13 +35,15 @@ const SetupCompanyLayout = (props: SetupCompanyLayoutProps) => {
 
     return (
         <Grid container >
-            <aside>
-                <CompanySummary {...props} />
-            </aside>
-            <Divider orientation="vertical" flexItem/>
-            <main>
-                {props.children}
-            </main>
+            <Box display="flex">
+                <Box order={1} width={1/3} p={2}>
+                    <CompanySummary />
+                </Box>
+                <Divider style={{order: 2}} orientation="vertical" flexItem />
+                <Box order={3} width={2/3} p={2}>
+                    {props.children}
+                </Box>
+            </Box>
         </Grid>
     )
 };
