@@ -21,12 +21,12 @@ const SetupCompany = (props: SetupCompanyProps) => {
 
     return (
         <Stepper>
-            <Step label={intl.formatMessage({ id: 'setup-company.setDomain.title'})}>
+            <Step label={intl.formatMessage({ id: 'setup-company.domain.title'})}>
                 <SetupCompanyLayout {...props}>
                     <Domain {...props}/>
                 </SetupCompanyLayout>
             </Step>
-            <Step label={intl.formatMessage({ id: 'setup-company.setTeam.title'})}>
+            <Step label={intl.formatMessage({ id: 'setup-company.team.title'})}>
                 <SetupCompanyLayout {...props}>
                     <Team {...props}/>
                 </SetupCompanyLayout>

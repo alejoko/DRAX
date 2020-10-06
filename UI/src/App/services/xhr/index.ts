@@ -116,8 +116,8 @@ export class XhrService {
      * @param config Configuration arguments
      */
     public constructor() {
-        // Axios.interceptors.request.use(this._requestInterceptor);
-        // Axios.interceptors.response.use(response => response, this._responseErrorInterceptor);
+        Axios.interceptors.request.use(this._requestInterceptor);
+        Axios.interceptors.response.use(response => response, this._responseErrorInterceptor);
     }
 
     /** Get configuration */

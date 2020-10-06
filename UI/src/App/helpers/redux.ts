@@ -86,7 +86,6 @@ export async function entitySafeLoad<T = any>(
     isRequestPending: (reqPending: any, store: string) => boolean = (reqPending, store) => reqPending[store],
     updateRequestPending: (reqPending: any, store: string, value: boolean) => void = (reqPending, store, value) => reqPending[store] = value
 ) {
-    debugger;
     const state = getState();
     if (!isAlreadyLoad(state, store)) {
         if (!isRequestPending(requested, store)) {

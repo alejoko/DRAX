@@ -27,7 +27,19 @@
     "generic-error-page.404.message": "Sorry, the page you visited does not exist.",
     "generic-error-page.500.message" : "Sorry, something went wrong",
 
-    "setup-company.setDomain.title": "02/03 Set Domain",
-    "setup-company.setTeam.title": "03/03 Set Team"
+    "setup-company.domain.title": "02/03 Set Domain",
+    "setup-company.team.title": "03/03 Set Team",
+    "setup-company.companySummary.mainOffice": "Main Office",
+    "setup-company.companySummary.employees": "Employees",
+    "setup-company.domain.website": "Visit Website",
+    "setup-company.domain.refineDomain": "Refine the domain",
+    "setup-company.domain.sector": "Sector",
+    "setup-company.domain.products": "Products",
+    "setup-company.domain.location": "Location",
+    "setup-company.domain.narrative": "Narrative",
+    "setup-company.domain.peers": "Peers",
+
+    "setup-company.team.boardStructure": "Board Structure",
+    "setup-company.team.andMightBe": "And might be"
 
 }

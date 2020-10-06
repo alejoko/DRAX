@@ -5,19 +5,9 @@ import { LoaderInfo } from 'src/App/hoc/withDataFromRedux';
 import { XhrClient } from 'src/App/services/xhr';
 
 import { nameof } from 'src/App/helpers/string';
-import { actionCreator, entitySafeLoad  } from 'src/App/helpers/redux';
+import { actionCreator, EntityPayload, entitySafeLoad, EntityBucket  } from 'src/App/helpers/redux';
 
 import CompanyService, { ICompanyModel } from '../../services/company.service';
-
-type EntityBucket<T = any> = {
-    data: T;
-    cache: { [key: string]: T };
-};
-
-type EntityPayload<T = any> = {
-    data: T;
-    idKey: string;
-}
 
 export type GetCompanyByIdPayload = EntityPayload<ICompanyModel>;
 export type CompanyStore = EntityBucket<ICompanyModel>;
@@ -34,7 +24,7 @@ abstract class CompanyActions {
     public static get = (state: any): CompanyStore => state[st];
 
    public static fetchCompanyById = (client: XhrClient, companyId: string) => async (dispatch: Dispatch, getState: () => any) => {
-        const result = await entitySafeLoad<ICompanyModel>(
+        /*const result = await entitySafeLoad<ICompanyModel>(
             dispatch,
             getState,
             st,
@@ -43,7 +33,8 @@ abstract class CompanyActions {
             nameof<ICompanyModel>('id')
         );
         console.log('resultado action: ', result);
-        return result;
+        return result;*/
+        return null;
     }
 }
 export default CompanyActions;

@@ -23,24 +23,13 @@ const SetupCompanyLayout = (props: SetupCompanyLayoutProps) => {
 
     // const { companyId } = useParams();
     const companyId = '29218';
-
-    const client = useXhrClient();
-    const dispatch = useDispatch();
-    const state = useSelector((state : any) => state?.stCompany?.data[0]);
+    // const client = useXhrClient();
+    // const dispatch = useDispatch();
+    // const state = useSelector((state : any) => state?.stCompany?.data[0]);
     debugger;
-    console.log('Estado que retorna ', state);
+    // console.log('Estado que retorna ', state);
 
-    useEffect(() => { dispatch(CompanyActions.fetchCompanyById(client, companyId)); }, [companyId, dispatch]);
-
-    /*
-
-
-
-    // const { companyId } = useParams();
-
-    // const data = useSelector(({ phoneDetails }) => phoneDetails);
-
-    */
+    // useEffect(() => { dispatch(CompanyActions.fetchCompanyById(client, companyId)); }, [companyId, dispatch]);
 
 
     return (

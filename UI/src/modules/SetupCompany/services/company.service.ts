@@ -1,8 +1,8 @@
 import { XhrClient } from "src/App/services/xhr";
-import { IResponse } from "src/App/helpers/model";
+import { IResponse, ISearchResponse } from "src/App/helpers/model";
 
 import config from 'src/config';
-import converterCompanyData from './converters';
+import { companyConverter, sectorConverter, productConverter } from './converters';
 
 export interface ICompanyModel {
     id: string;
@@ -14,16 +14,50 @@ export interface ICompanyModel {
     employees: number;
 };
 
-export interface ICompanyResponse extends IResponse<ICompanyModel> {};
+export interface ISectorModel {
+    key: string;
+    value: string;
+};
+
+export interface IProductModel {
+    key: string;
+    value: string;
+};
+
+export interface ICompanyResponse extends IResponse<ISearchResponse<ICompanyModel>> {}
+export interface ISectorResponse extends IResponse<ISearchResponse<ISectorModel>> {};
+export interface IProductResponse extends IResponse<ISearchResponse<IProductModel>> {};
 
 export default abstract class CompanyService {
 
     public static async getCompanyById(client: XhrClient, companyId: string) {
         const response = await client
             .get<ICompanyModel>(`${config.endpoint}fastapi/company/${companyId}`)
-            .then(resp => converterCompanyData(resp.data));
+            .then(resp => companyConverter(resp.data));
+        return response;
+    }
 
-        console.log('response in service: ', response);
+    public static async getSectors(client: XhrClient) {
+        //TODO: its necessary company id?
+        const response = await client
+            .get<ISectorModel>(`${config.endpoint}/fastapi/company/sector`)
+            .then(resp => sectorConverter(resp.data));
+        return response;
+    }
+
+    public static async getProducts(client: XhrClient) {
+        //TODO: its necessary company id?
+        const response = await client
+            .get<IProductResponse>(`${config.endpoint}/fastapi/company/product`)
+            .then(resp => productConverter(resp.data));
+        return response;
+    }
+
+    //TODO: review that
+    public static async searchCompanies(client: XhrClient, queryString: string) {
+        const response = await client
+            .get<ICompanyResponse>(`${config.endpoint}/fastapi/company${queryString}`)
+            .then(resp => companyConverter(resp.data));
         return response;
     }
 };

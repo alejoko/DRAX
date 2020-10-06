@@ -1,7 +1,6 @@
-const companies = [
-    {
-        "company_id": "29218",
-        "company_record": {
+const getProducts = () => {
+    return {
+        "results": {
             "turnover": 3320616000,
             "employee_count": 666,
             "id": 29218,
@@ -6304,12 +6303,32 @@ const companies = [
                     "value": 1940000,
                     "date": "2017-10-25T00:00:00",
                     "id": 2797010,
+                    "intersection_types": [
+                        {
+                            "transaction_type_id": 29,
+                            "id": 5255699,
+                            "company_transaction_id": 2797010,
+                            "type": {
+                                "name": "Merger/Acquisition",
+                                "id": 29
+                            }
+                        },
+                        {
+                            "transaction_type_id": 11,
+                            "id": 5255702,
+                            "company_transaction_id": 2797010,
+                            "type": {
+                                "name": "Equity",
+                                "id": 11
+                            }
+                        }
+                    ],
                     "company": {
                         "turnover": null,
                         "employee_count": 34,
                         "id": 2065588,
                         "ebitda": null,
-                        "description": "Distributor of wood pellets intended to offer renewable energy through biomass. The company's wood pellets include bagged pellets, bulk blown pellets and horse bedding product, enabling homeowners and companies to keep their properties warm using the leading renewable heat technology.",
+                        "description": "Distributor of wood pellets intended to offer renewable energy through biomass. The company's wood pellets include bagged pellets, bulk blown pellets and horse bedding products, enabling homeowners and companies to keep their properties warm using the leading renewable heat technology.",
                         "name": "Billington Bioenergy",
                         "sectors": [
                             {
@@ -6346,26 +6365,6 @@ const companies = [
                         ],
                         "transactions_acquisition": []
                     },
-                    "intersection_types": [
-                        {
-                            "transaction_type_id": 29,
-                            "id": 5255699,
-                            "company_transaction_id": 2797010,
-                            "type": {
-                                "name": "Merger/Acquisition",
-                                "id": 29
-                            }
-                        },
-                        {
-                            "transaction_type_id": 11,
-                            "id": 5255702,
-                            "company_transaction_id": 2797010,
-                            "type": {
-                                "name": "Equity",
-                                "id": 11
-                            }
-                        }
-                    ],
                     "types": [
                         {
                             "name": "Merger/Acquisition",
@@ -6742,8 +6741,10 @@ const companies = [
             }
         }
     }
-];
 
-const getCompanyById = companyId => companies.find(company => company.company_id === companyId);
+    ;
+};
 
-exports.getCompanyById = getCompanyById;
+
+
+
