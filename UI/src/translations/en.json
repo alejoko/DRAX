@@ -9,15 +9,20 @@
     "field.value": "value",
     "field.contentInfo": "content info",
 
+    "main-menu.logo": "Drax",
     "main-menu.client": "Client",
     "main-menu.search": "Search",
     "main-menu.pace": "PACE",
     "main-menu.leadership.dynamics": "Leadership Dynamics",
     "main-menu.drx.executive": "DRX Executive",
 
+    "message.last-login-at": "Last login at",
+    "message.welcome-message": "Hello {name}, welcome back!",
+
     "action.login": "Login",
+    "action.logout": "Logout",
     "action.cancel": "Cancel",
-    
+
     "loading.authenticate": "Authenticating ...",
 
     "validation.required": "Please input your {field}",

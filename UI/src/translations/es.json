@@ -1,6 +1,6 @@
 {
     "app.title": "Esqueleto",
-    
+
     "login.username": "nombre de usuario",
     "login.password": "contraseña",
     "login.rememberMe": "recuérdame",
@@ -8,16 +8,20 @@
     "field.tag": "etiqueta",
     "field.value": "valor",
     "field.contentInfo": "información",
-    
+
     "main-menu.client": "Cliente",
     "main-menu.search": "Búsqueda",
     "main-menu.pace": "PACE",
     "main-menu.leadership.dynamics": "Leadership Dynamics",
     "main-menu.drx.executive": "DRX Executive",
 
-    "action.login": "Entrar",
+    "message.last-login-at": "Última sesión el",
+    "message.welcome-message": "Hola {name}, bienvenido!",
+
+    "action.login": "Iniciar sesión",
+    "action.logout": "Cerrar sesión",
     "action.cancel": "Cancelar",
-    
+
     "loading.authenticate": "Autenticando ...",
 
     "validation.required": "Por favor introduzca {field}",

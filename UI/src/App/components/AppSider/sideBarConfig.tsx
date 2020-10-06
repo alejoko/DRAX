@@ -1,33 +1,35 @@
-import Search from '@material-ui/icons/Search';
-import StarBorder from '@material-ui/icons/StarBorder';
-import FolderOpen from '@material-ui/icons/FolderOpen';
-import HelpOutline from '@material-ui/icons/HelpOutline';
-
 import ClientModule from 'src/modules/client/components';
+import {
+  MainMenuTarget,
+  MainMenuFavorite,
+  MainMenuFolder,
+  MainMenuHelp
+} from '../shared/Icons';
+
 
 export const sideBarItems = [
     {
         key: "companySearch",
         path: ClientModule.path,
         routes: ClientModule.routes.companySearch,
-        icon: Search
+        icon: MainMenuTarget
     },
     {
         key: "watchList",
         path: ClientModule.path,
         routes: ClientModule.routes.watchList,
-        icon: StarBorder
+        icon: MainMenuFavorite
     },
     {
         key: "mySearches",
         path: ClientModule.path,
         routes: ClientModule.routes.mySearches,
-        icon: FolderOpen
+        icon: MainMenuFolder
     },
     {
         key: "how ItWorks",
         path: ClientModule.path,
         routes: ClientModule.routes.howItWorks,
-        icon: HelpOutline
+        icon: MainMenuHelp
     }
 ];
