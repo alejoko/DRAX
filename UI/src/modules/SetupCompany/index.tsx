@@ -23,7 +23,7 @@ const SetupCompany = (props: SetupCompanyProps) => {
         <Stepper>
             <Step label={intl.formatMessage({ id: 'setup-company.domain.title'})}>
                 <SetupCompanyLayout {...props}>
-                    <Domain {...props}/>
+                    <Domain />
                 </SetupCompanyLayout>
             </Step>
             <Step label={intl.formatMessage({ id: 'setup-company.team.title'})}>

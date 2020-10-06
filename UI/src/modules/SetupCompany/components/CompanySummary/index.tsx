@@ -1,14 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { useIntl } from 'react-intl';
-import { RouteComponentProps } from 'react-router-dom';
 
 import Box from '@material-ui/core/Box';
-
 import FolderOpen from '@material-ui/icons/FolderOpen';
 import Link from '@material-ui/core/Link';
-
-import { AppActions } from 'src/App/redux/actions';
 
 //TODO : get from API
 const companyInfo = {
@@ -50,8 +45,4 @@ const CompanySummary = () => {
     )
 };
 
-const mapStateToProps = (state: any) => ({
-    lang: AppActions.get(state).lang
-});
-
-export default connect(mapStateToProps)(CompanySummary);
+export default CompanySummary;
