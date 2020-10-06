@@ -1,9 +1,22 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+
 import Box from '@material-ui/core/Box';
 import FolderOpen from '@material-ui/icons/FolderOpen';
 import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
+
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        inlineBlock: {
+            display: 'inline-block',
+            verticalAlign: 'middle'
+        }
+    }),
+);
 
 //TODO : get from API
 const companyInfo = {
@@ -15,12 +28,15 @@ const companyInfo = {
 };
 
 const CompanySummary = () => {
+    const classes = useStyles();
     const intl = useIntl();
     const { companyName, mainOffice, employees, companyDescription, domain  } = companyInfo;
 
     return (
         <>
-        <FolderOpen /><div>{companyName}</div>
+        <Box pb={1}>
+            <Typography variant="h5"><Avatar className={classes.inlineBlock} /> {companyName}</Typography>
+        </Box>
         <Box display="flex">
             <Box order={1}>
                 <FolderOpen /><span>{intl.formatMessage({ id: 'setup-company.companySummary.mainOffice' })}</span>
@@ -34,7 +50,9 @@ const CompanySummary = () => {
             </Box>
         </Box>
         <Box pt={2} pb={2}>
-            {companyDescription}
+            <Typography variant="caption">
+                {companyDescription}
+            </Typography>
         </Box>
         <div>
             <Link href={domain} target="_blank">

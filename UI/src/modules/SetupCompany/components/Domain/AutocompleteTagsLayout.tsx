@@ -9,7 +9,7 @@ type AutocompleteTagsLayoutProps<T = any> = {
     value: T[] | undefined;
     values: T[] | (() => Promise<any>);
     //SvgIconComponent: JSX.Element; // TODO: to be fixed
-    textFieldLabel: string;
+    textFieldLabel: JSX.Element | string;
 };
 
 const AutocompleteTagsLayout = (props : AutocompleteTagsLayoutProps) => {

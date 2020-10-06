@@ -13,7 +13,6 @@ type StepperProps = {
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            width: '75%',
             border: `1px solid ${theme.palette.divider}`,
             borderRadius: '33px', //theme.shape.borderRadius,
             backgroundColor: theme.palette.background.paper,
@@ -42,11 +41,18 @@ export default function  Stepper ({activeStep, children}: StepperProps) {
         current > -1 && setCurrentStep(current);
     }, [activeStep, children]);
 
-    return <Box className={classes.root}>
-        {steps[currentStep]}
-        <Button color="primary" onClick={handlePrev}>Prev </Button>
-        <Button variant="contained" color="secondary" onClick={handleNext}>Next</Button>
-    </Box>;
+    return <div>
+        <Box p={1} textAlign="center" fontSize="h6.fontSize">
+            {children[currentStep].props.label}
+        </Box>
+        <Box className={classes.root}>
+            {steps[currentStep]}
+            <Box px={3} py={2} textAlign="right">
+                <Button color="primary" onClick={handlePrev}>Prev </Button>
+                <Button variant="contained" color="secondary" onClick={handleNext}>Next</Button>
+            </Box>
+        </Box>
+    </div>;
 };
 
 Stepper.propTypes = {

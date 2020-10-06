@@ -1,10 +1,19 @@
 import React, { useEffect, useState, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 
-import FolderOpen from '@material-ui/icons/FolderOpen'; // TODO: to be removed
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
+
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        nakedTextField: {
+            '& .MuiInput-underline:before, & .MuiInput-underline:hover:before': {
+                borderBottom: `none`,
+            }
+        },
+    }),
+);
 
 type AutocompleteTagsProps<T = any> = {
     value: T[] | undefined;
@@ -17,6 +26,7 @@ type AutocompleteTagsProps<T = any> = {
 };
 
 const AutocompleteTags = ({ value, values, getOptionSelected, getOptionLabel, renderOption, textFieldLabel  } : AutocompleteTagsProps) => {
+    const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [options, setOptions] = useState([]);
     const loading = open && options.length === 0;
@@ -43,8 +53,7 @@ const AutocompleteTags = ({ value, values, getOptionSelected, getOptionLabel, re
         }
     }, [open]);
 
-    return <div>
-        <Autocomplete
+    return <Autocomplete
             multiple
             id="size-small-standard-multi"
             size="small"
@@ -59,13 +68,9 @@ const AutocompleteTags = ({ value, values, getOptionSelected, getOptionLabel, re
             renderOption={renderOption}
             defaultValue={value}
             renderInput={(params) => (
-                <Box display="flex">
-                    <FolderOpen />
-                    <TextField {...params} variant="standard" label={textFieldLabel} />
-                </Box>
+                    <TextField className={classes.nakedTextField} {...params} variant="standard" label={textFieldLabel} />
             )}
-        />
-    </div>;
+        />;
 };
 
 AutocompleteTags.propTypes = {

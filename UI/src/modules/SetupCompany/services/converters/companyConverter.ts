@@ -1,11 +1,13 @@
-const getSectors = (response : any) => response?.sectors?.map((sector: any) => ({ key: sector?.id, value: sector?.name}));
+const getDomain = (response : any) => `http://www.${response?.company_record?.domains[0]?.domain}`;
+
+const getSectors = (response : any) => response?.company_record?.sectors?.map((sector: any) => ({ key: sector?.id, value: sector?.name}));
 
 const getProducts = (response : any) => response?.products?.map((product: any) => ({ key: product?.id, value: product?.name}));
 
 //TODO: to be changed.
 const getLocation = (response : any) => 'local';
 
-const getDomain = (response : any) => `http://www.${response?.company_record?.domains[0]?.domain}`
+const getTags = (response : any) => response?.tags?.map((product: any) => ({ key: product?.id, value: product?.name}));
 
 const companyConverter = (response : any) => ({
     companyId: response?.company_id,
@@ -17,7 +19,8 @@ const companyConverter = (response : any) => ({
     employees: response?.employee_count,
     sectors: getSectors(response),
     products: getProducts(response),
-    location: getLocation(response)
+    location: getLocation(response),
+    tags: getTags(response)
 });
 
 export default companyConverter;

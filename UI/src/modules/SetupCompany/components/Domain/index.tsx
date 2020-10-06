@@ -28,7 +28,7 @@ const Domain = () => {
             />
             <AutocompleteTagsLayout
                 value={currentValue}
-                values={asyncValues}
+                values={values}
                 textFieldLabel={intl.formatMessage({ id: 'setup-company.domain.peers' })}
             />
         </>

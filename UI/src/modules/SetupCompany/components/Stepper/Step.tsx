@@ -6,11 +6,8 @@ type StepProps = {
     label?: string;
 };
 
-const Step = ({label, children}: StepProps) => {
-    return <div>
-        <h3>{label}</h3>
-        {children}
-    </div>;
+const Step = ({children}: StepProps) => {
+    return children;
 };
 
 Step.propTypes = {

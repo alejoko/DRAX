@@ -37,7 +37,8 @@ export default abstract class CompanyService {
         return response;
     }
 
-    public static async getSectors(client: XhrClient) {
+    //TODO: usar mas adelante
+    /*public static async getSectors(client: XhrClient) {
         //TODO: its necessary company id?
         const response = await client
             .get<ISectorModel>(`${config.endpoint}/fastapi/company/sector`)
@@ -59,5 +60,5 @@ export default abstract class CompanyService {
             .get<ICompanyResponse>(`${config.endpoint}/fastapi/company${queryString}`)
             .then(resp => companyConverter(resp.data));
         return response;
-    }
+    }*/
 };
