@@ -41,15 +41,12 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
     const logoutPasswordHandler = () => { console.log('logout'); service.logout(); };
     const finishHandler = (/*_: LoginFormValues*/) => { bindedHandleSubmit(); };
 
-    const isAuth = service.authenticated();
-
     const getAnonMenuItems = () =>
         <Toolbar>
             <IconButton color="inherit" onClick={loginClickHandler}>
                 <User />
             </IconButton>
         </Toolbar>;
-
 
     const getAuthMenuItems = () =>
         <Toolbar>
@@ -111,7 +108,7 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
                     </Box>
                 </Grid>
             </Grid>
-        </Toolbar>;
+        </Toolbar>
 
     return (
         <AppBar
@@ -119,7 +116,7 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
             position="fixed"
         >
             <Box className={classes.contentWrapper}>
-                { isAuth ? getAuthMenuItems() : getAnonMenuItems() }
+                { getAuthMenuItems() }
             </Box>
             <Modal
                 open={visible}
