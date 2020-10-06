@@ -1,11 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, ReactElement} from 'react';
 import PropTypes from 'prop-types';
 
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 
-/*
-const AutocompleteTags = ({value, values, getOptionSelected, getOptionLabel, renderOption, renderTags, placeholder}) => {
+type AutocompleteTagsProps<T = any> = {
+    value: T[] | undefined;
+    values: T[] | (() => Promise<any>);
+    placeholder: string;
+    renderOption: (obj: T) => ReactElement;
+    getOptionLabel: (obj: T) => string;
+    getOptionSelected?: ((option: T, value: T ) => boolean) | undefined;
+};
+
+const AutocompleteTags = ({value, values, getOptionSelected, getOptionLabel, renderOption, placeholder} : AutocompleteTagsProps) => {
     const [open, setOpen] = useState(false);
     const [options, setOptions] = useState([]);
     const loading = open && options.length === 0;
@@ -46,7 +54,6 @@ const AutocompleteTags = ({value, values, getOptionSelected, getOptionLabel, ren
             limitTags={3}
             getOptionLabel={getOptionLabel}
             renderOption={renderOption}
-            renderTags={renderTags}
             defaultValue={value}
             renderInput={(params) => (
                 <TextField {...params} variant="standard" label="Size small" placeholder={placeholder} />
@@ -73,6 +80,4 @@ AutocompleteTags.propTypes = {
     ])
 };
 
-export default AutocompleteTags; */
-
-export const ss = 'xxx';
+export default AutocompleteTags;

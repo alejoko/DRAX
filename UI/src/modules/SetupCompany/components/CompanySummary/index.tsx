@@ -9,11 +9,6 @@ import FolderOpen from '@material-ui/icons/FolderOpen';
 import Link from '@material-ui/core/Link';
 
 import { AppActions } from 'src/App/redux/actions';
-import { ChangeLangPayload } from 'src/App/redux/actions/AppActions';
-
-type CompanySummaryProps = RouteComponentProps<{ lang: string }> & {
-    lang?: ChangeLangPayload;
-};
 
 //TODO : get from API
 const companyInfo = {
