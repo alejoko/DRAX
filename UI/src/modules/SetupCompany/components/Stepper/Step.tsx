@@ -2,7 +2,7 @@ import React, { ReactNode, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 
 type StepProps = {
-    children?: ReactElement | null;
+    children?: any;
     label?: string;
 };
 

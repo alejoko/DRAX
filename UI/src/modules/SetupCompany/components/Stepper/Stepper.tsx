@@ -6,7 +6,8 @@ import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 
 type StepperProps = {
-    children?: JSX.Element | JSX.Element[];
+    //TODO: Investigate why is failing setting the type as JSX.Element | JSX.Element[]
+    children?: any;
     activeStep?: number;
 };
 
@@ -43,7 +44,7 @@ export default function  Stepper ({activeStep, children}: StepperProps) {
 
     return <div>
         <Box p={1} textAlign="center" fontSize="h6.fontSize">
-            {children[currentStep].props.label}
+            {children && children[currentStep].props.label}
         </Box>
         <Box className={classes.root}>
             {steps[currentStep]}
