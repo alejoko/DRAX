@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -23,6 +25,7 @@ import { AppActions } from 'src/App/redux/actions';
 
 import { AuthResultStatus } from 'src/App/services/auth/_auth.type';
 import { AuthPasswordLoginArgs } from 'src/App/services/auth/auth-password.service';
+import ClientModule from '../../../client/components';
 
 export type LoginFormValues = {
     username?: string;
@@ -38,7 +41,10 @@ export type LoginFormProps = {
 
 const useStyles = makeStyles((theme) => ({
     paper: {
+        backgroundColor: theme.palette.common.white,
+        padding: theme.spacing(5),
         marginTop: theme.spacing(8),
+        borderRadius: '5px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -107,8 +113,8 @@ const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>((props, ref) => {
                     validationSchema={loginSchema}
                     onSubmit={values => {
                         console.log(values);
+                        window.location.href = ClientModule.path
                     }}
-
                 >
                     {({errors, handleChange, touched, handleSubmit}) => {
                         bindHandleSubmit && bindHandleSubmit(handleSubmit);
@@ -145,9 +151,26 @@ const LoginForm = forwardRef<HTMLFormElement, LoginFormProps>((props, ref) => {
                                     }
                                 />
                                 <FormControlLabel
-                                    control={<Checkbox value="remember" color="primary" />}
                                     label="Remember me"
+                                    control={<Checkbox
+                                        onChange={handleChange}
+                                        name="rememberMe"
+                                        id="rememberMe"
+                                        value="rememberMe"
+                                        color="primary"
+                                    />}
                                 />
+                                <Box mt={2}>
+                                    <Button
+                                        disableElevation
+                                        fullWidth
+                                        size="large"
+                                        type="submit"
+                                        variant="contained"
+                                        color="primary">
+                                        Log in
+                                    </Button>
+                                </Box>
                             </Form>
                         );
                     }}

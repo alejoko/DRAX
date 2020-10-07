@@ -11,6 +11,7 @@ import Loader from './components/Loader';
 import { ReduxDrawer } from './components/ReduxDrawer';
 
 import GenericErrorPage, { genericErrorPageConfig as errorConfig } from './components/GenericErrorPage';
+import LoginForm from 'src/modules/auth/components/LoginForm';
 
 import { AppActions } from './redux/actions';
 
@@ -29,6 +30,7 @@ function AppContainer({ match, loading, loadingText }: AppContainerProps) {
             <Loader loading={loading!} text={loadingText} />
             <ReduxDrawer />
             <Switch>
+                <Route exact={true} path='/' render={() => <LoginForm />} />
                 <Route exact={true} path={`${path}${errorConfig.internalServerErrorPath}`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.500.message'})} />} />
                 <Route exact={true} path={`${path}${errorConfig.forbiddenPath}`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.403.message'})} />} />
                 <Route exact={true} path={`${path}${errorConfig.notFoundPath}`} render={(props) => <GenericErrorPage severity="error" message={intl.formatMessage({ id: 'generic-error-page.404.message'})} />} />
