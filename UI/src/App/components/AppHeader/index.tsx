@@ -14,15 +14,15 @@ import Box from '@material-ui/core/Box';
 import styles from './styles';
 
 import Modal from '../Modal/index';
-import ClientModule from 'src/modules/client/components';
-import LoginForm, { LoginFormValues } from 'src/modules/auth/components/LoginForm';
+import ClientModule from 'src/modules/client/components'
 
 import { useAuthService } from '../../hooks/AuthProvider';
 import { buildRoute } from 'src/App/helpers/string';
 
 import { AppActions } from 'src/App/redux/actions';
 import { ChangeLangPayload } from 'src/App/redux/actions/AppActions';
-import { Search, User, Notifications } from '../shared/Icons';
+import CustomIcon from '../CustomIcon';
+import icons from '../../enums/icons';
 
 export type AppHeaderProps = RouteComponentProps<{ lang: string }> & {
     lang?: ChangeLangPayload;
@@ -41,15 +41,12 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
     const logoutPasswordHandler = () => { console.log('logout'); service.logout(); };
     const finishHandler = (/*_: LoginFormValues*/) => { bindedHandleSubmit(); };
 
-    const isAuth = service.authenticated();
-
     const getAnonMenuItems = () =>
         <Toolbar>
             <IconButton color="inherit" onClick={loginClickHandler}>
-                <User />
+                <CustomIcon icon={icons.user} />
             </IconButton>
         </Toolbar>;
-
 
     const getAuthMenuItems = () =>
         <Toolbar>
@@ -97,21 +94,21 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
                             className={classes.searchInput}
                             inputProps={{ 'aria-label': 'search' }}
                             endAdornment={<IconButton>
-                                <Search className={classes.searchInputIcon} />
+                                <CustomIcon className={classes.searchInputIcon} icon={icons.search} />
                             </IconButton>}
                         />
                         <IconButton color="inherit">
                             <Badge badgeContent={1} variant="dot" color="secondary">
-                                <Notifications />
+                                <CustomIcon icon={icons.bell} />
                             </Badge>
                         </IconButton>
                         <IconButton color="inherit" onClick={logoutPasswordHandler}>
-                            <User />
+                            <CustomIcon icon={icons.user} />
                         </IconButton>
                     </Box>
                 </Grid>
             </Grid>
-        </Toolbar>;
+        </Toolbar>
 
     return (
         <AppBar
@@ -119,15 +116,15 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
             position="fixed"
         >
             <Box className={classes.contentWrapper}>
-                { isAuth ? getAuthMenuItems() : getAnonMenuItems() }
+                { getAuthMenuItems() }
             </Box>
-            <Modal
+            {/* <Modal
                 open={visible}
                 onDiscard={() => setVisible(false)}
                 onConfirm={() => finishHandler()}
             >
-                <LoginForm bindHandleSubmit={bindHandleSubmit} onFinish={finishHandler} />
-            </Modal>
+                <div>Esto es un modal...</div>
+            </Modal> */}
         </AppBar>
     )
 };
