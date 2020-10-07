@@ -14,8 +14,7 @@ import Box from '@material-ui/core/Box';
 import styles from './styles';
 
 import Modal from '../Modal/index';
-import ClientModule from 'src/modules/client/components';
-import LoginForm, { LoginFormValues } from 'src/modules/auth/components/LoginForm';
+import ClientModule from 'src/modules/client/components'
 
 import { useAuthService } from '../../hooks/AuthProvider';
 import { buildRoute } from 'src/App/helpers/string';
@@ -119,13 +118,13 @@ const AppHeader = ({ lang }: AppHeaderProps) => {
             <Box className={classes.contentWrapper}>
                 { getAuthMenuItems() }
             </Box>
-            <Modal
+            {/* <Modal
                 open={visible}
                 onDiscard={() => setVisible(false)}
                 onConfirm={() => finishHandler()}
             >
-                <LoginForm bindHandleSubmit={bindHandleSubmit} onFinish={finishHandler} />
-            </Modal>
+                <div>Esto es un modal...</div>
+            </Modal> */}
         </AppBar>
     )
 };
