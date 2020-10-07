@@ -1,2 +1,0 @@
-export type OpenFactory<T> = (onOpen: () => void, visible: boolean, value?: T, label?: string) => JSX.Element;
-export type CloseFactory<T> =(onClose: (accept: boolean, value?: T) => void, visible: boolean, value?: T, label?: string) => JSX.Element;
