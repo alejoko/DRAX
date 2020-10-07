@@ -14,10 +14,9 @@ type StepperProps = {
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
-            border: `1px solid ${theme.palette.divider}`,
-            borderRadius: '33px', //theme.shape.borderRadius,
             backgroundColor: theme.palette.background.paper,
-            color: theme.palette.text.secondary,
+            borderRadius: '29px',
+            boxShadow: '0 10px 18px 4px #00173124'
         },
     }),
 );
@@ -42,9 +41,9 @@ export default function  Stepper ({activeStep, children}: StepperProps) {
         current > -1 && setCurrentStep(current);
     }, [activeStep, children]);
 
-    return <div>
+    return <>
         <Box p={1} textAlign="center" fontSize="h6.fontSize">
-            {children && children[currentStep].props.label}
+            {children[currentStep].props.label}
         </Box>
         <Box className={classes.root}>
             {steps[currentStep]}
@@ -53,7 +52,7 @@ export default function  Stepper ({activeStep, children}: StepperProps) {
                 <Button variant="contained" color="secondary" onClick={handleNext}>Next</Button>
             </Box>
         </Box>
-    </div>;
+    </>;
 };
 
 Stepper.propTypes = {
