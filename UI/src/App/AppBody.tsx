@@ -13,7 +13,7 @@ import { fixUrlEnd } from 'src/App/helpers/string';
 
 const useStyles = makeStyles((theme) => ({
     appBody: {
-        padding: theme.spacing(5),
+        padding: '7.2%',
         ...theme.mixins.appBody,
         '&::before': {
             content: '""',

@@ -3,18 +3,53 @@ import { useIntl } from 'react-intl';
 
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
-import Box from '@material-ui/core/Box';
-import FolderOpen from '@material-ui/icons/FolderOpen';
+import Box from '@material-ui/core/Box'
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
+import draxLogo from '../../../../assets/images/svgs/drax-logo.svg';
+import CustomIcon from '../../../../App/components/CustomIcon';
+import icons from '../../../../App/enums/icons';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        inlineBlock: {
-            display: 'inline-block',
-            verticalAlign: 'middle'
-        }
+        summaryHeaderAvatar: {
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginRight: theme.spacing(2),
+            padding: theme.spacing(0, 1),
+            width: 64,
+            height: 64,
+            boxShadow: '1px 4px 10px 0 #dee0f099',
+            '& .MuiAvatar-img': {
+                maxWidth: '100%',
+                objectFit: 'contain'
+            }
+        },
+        summaryHeaderName: {
+            fontSize: 32,
+        },
+        summaryItem: {
+            marginRight: theme.spacing(4),
+            fontSize: 12,
+            color: theme.palette.others.teal,
+            fontWeight: 700,
+            '&:first-child .MuiSvgIcon-root': {
+                fontSize: 20,
+            },
+            '&:nth-child(2) .MuiSvgIcon-root': {
+                fontSize: 20,
+            },
+        },
+        summaryItemIcon: {
+            color: theme.palette.others.teal,
+            marginRight: theme.spacing(1/2),
+        },
+        summaryItemValue: {
+            color: theme.palette.others.darkestColor,
+            fontSize: 14,
+        },
     }),
 );
 
@@ -34,31 +69,39 @@ const CompanySummary = () => {
 
     return (
         <>
-        <Box pb={1}>
-            <Typography variant="h5"><Avatar className={classes.inlineBlock} /> {companyName}</Typography>
-        </Box>
-        <Box display="flex">
-            <Box order={1}>
-                <FolderOpen /><span>{intl.formatMessage({ id: 'setup-company.companySummary.mainOffice' })}</span>
-                <br />
-                <div>{mainOffice}</div>
+            <Box display='flex' alignItems='center' mb={4}>
+                <Avatar className={classes.summaryHeaderAvatar} src={draxLogo} alt={companyName} />
+                <Typography variant="h5" className={classes.summaryHeaderName}>
+                    {companyName}
+                </Typography>
             </Box>
-            <Box order={2} pl={1}>
-                <FolderOpen /><span>{intl.formatMessage({ id: 'setup-company.companySummary.employees' })}</span>
-                <br />
-                <div>{employees}</div>
+            <Box display="flex" alignItems="baseline" mb={3}>
+                <Box className={classes.summaryItem}>
+                    <CustomIcon icon={icons.office} className={classes.summaryItemIcon} />
+                    <Box component='span'>
+                        {intl.formatMessage({ id: 'setup-company.companySummary.mainOffice' })}
+                    </Box>
+                    <Box className={classes.summaryItemValue}>{mainOffice}</Box>
+                </Box>
+                <Box className={classes.summaryItem}>
+                    <CustomIcon icon={icons.users} className={classes.summaryItemIcon} />
+                    <Box component='span'>
+                        {intl.formatMessage({ id: 'setup-company.companySummary.employees' })}
+                    </Box>
+                    <Box className={classes.summaryItemValue}>{employees}</Box>
+                </Box>
             </Box>
-        </Box>
-        <Box pt={2} pb={2}>
-            <Typography variant="caption">
-                {companyDescription}
-            </Typography>
-        </Box>
-        <div>
-            <Link href={domain} target="_blank">
-                {intl.formatMessage({ id: 'setup-company.companySummary.website' })}
-            </Link>
-            </div>
+            <Box pb={2}>
+                <Typography variant="body1">
+                    {companyDescription}
+                </Typography>
+            </Box>
+            <Box display='flex' justifyContent='flex-end'>
+                <Link href={domain} target="_blank">
+                    {intl.formatMessage({ id: 'setup-company.companySummary.website' })}
+                    <CustomIcon icon={icons.chevronRight} />
+                </Link>
+            </Box>
         </>
     )
 };

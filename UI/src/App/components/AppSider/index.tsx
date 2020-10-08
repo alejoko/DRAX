@@ -1,4 +1,4 @@
-import React, { useMemo, Fragment } from 'react';
+import React, { useMemo } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -17,17 +17,14 @@ export type AppSiderProps = RouteComponentProps<{ lang: string }> & {
 const AppSider = (props: AppSiderProps) => {
     const { lang, match, location } = props;
 
-    const getSideBarMenu = (section: string, selected: string) =>
-        section === ClientModule.path && (<SideBar selected={selected} lang={lang?.code!} byUser={lang?.byUser!} />);
-
     const [section, selected] = useMemo(
         () => getUrlPart(location.pathname, [ClientModule.path], !!match.params.lang),
         [location.pathname, match.params.lang]);
 
     return (
-        <Fragment>
-            {getSideBarMenu(section, selected)}
-        </Fragment>
+        <>
+            <SideBar selected={selected} lang={lang?.code!} byUser={lang?.byUser!} />
+        </>
     )
 };
 

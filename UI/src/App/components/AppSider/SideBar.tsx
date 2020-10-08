@@ -6,6 +6,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
+import CustomIcon from '../CustomIcon';
 import styles from './styles';
 
 import { buildRoute } from 'src/App/helpers/string';
@@ -43,7 +44,7 @@ export default function SideBar({ selected, lang, byUser }: SideBarProps) {
                           className={classes.sideNavItemLink}
                           to={buildRoute(lang, byUser, element.path, element.routes)}>
                             <ListItemIcon className={classes.sideNavItemLinkIcon}>
-                                <element.icon />
+                                <CustomIcon icon={element.icon} />
                             </ListItemIcon>
                         </Link>
                     </ListItem>)

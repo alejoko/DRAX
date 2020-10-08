@@ -46,6 +46,9 @@ const baseStyles = {
         secondary: {
             main: '#e05c55'
         },
+        text: {
+            primary: '#2d2d44',
+        },
         others: {
             darkestColor: '#2d2d44',
             darkerColor: '#33344e',
@@ -62,14 +65,24 @@ const baseStyles = {
     // Typography
     typography: {
         fontFamily: 'Lato, sans-serif',
-        color: '#2d2d44'
+        body1: {
+            fontSize: 14,
+            lineHeight: 1.5,
+        },
     },
     // Theme overrides
     overrides: {
         MuiLink: {
             root: {
-                cursor: 'pointer'
-            }
+                cursor: 'pointer',
+                color: '#087ca7',
+                fontSize: 14,
+                '& .MuiSvgIcon-root': {
+                    fontSize: 10,
+                    marginLeft: 3,
+                    transform: 'translate(0, 1px)'
+                },
+            },
         },
         MuiCssBaseline: {
             '@global': {

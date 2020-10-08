@@ -14,13 +14,7 @@ export default {
         },
         welcomeMessage: {
             fontSize: 32,
-            fontWeight: 700,
-            [theme.breakpoints.up('md')]: {
-                backgroundColor: 'red',
-              },
-            "@media (min-width:1440px)": {
-                maxWidth: 160
-            }
+            fontWeight: 700
         },
         otherText: {
             fontSize: 14,
