@@ -9,15 +9,11 @@ import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
 
 import { useXhrClient } from 'src/App/hooks/XhrProvider';
-import { AppActions } from 'src/App/redux/actions';
-import { CompanyActions, CompanyStore } from '../../redux/actions';
-
-import { ChangeLangPayload } from 'src/App/redux/actions/AppActions';
+import { CompanyActions } from '../../redux/actions'; // CompanyStore
 
 import CompanySummary from '../CompanySummary';
 
-type SetupCompanyLayoutProps = RouteComponentProps<{ lang: string }> & {
-    lang?: ChangeLangPayload;
+type SetupCompanyLayoutProps = {
     children?: ReactElement | null;
 };
 
